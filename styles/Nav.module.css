@@ -1,0 +1,55 @@
+﻿/* #header-inject {
+	background-color: rgb(239, 251, 255);
+} */
+
+.nav {
+	background: url("../global assets/bgnoise-blueslate.png");
+	/* background: #989ca8; */
+	height: 4rem;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+
+	display: flex;
+	justify-content: space-between;
+}
+
+.hamburger {
+	display: none;
+	cursor: pointer;
+	width: 2.5rem;
+}
+
+@media (max-width:768px) {
+	.hamburger {
+		display: block
+	}
+}
+
+#sectioncheck_logo {
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+	font-size: 3rem;
+	font-family: caveat;
+	user-select: none;
+	transition: color 0.2s;
+}
+
+/* .sectioncheck_logo {
+	color: rgb(255, 255, 255);
+	text-decoration: none;
+	font-size: 3rem;
+	font-family: caveat;
+	user-select: none;
+	transition: color 0.2s;
+} */
+
+#sectioncheck_logo:hover {
+	/* color: #5477a0 */
+	/* color: rgb(183, 255, 100); */
+	color: rgb(198, 255, 92)
+}
+
+/* .sectioncheck_logo:hover {
+	color: rgb(198, 255, 92)
+} */

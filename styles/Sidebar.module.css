@@ -1,0 +1,44 @@
+﻿#sidebar_inject {
+	/* background-color: rgb(255, 255, 243); */
+	background: url("../global assets/bgnoise-lightblueslate.png");
+	height: calc(100vh - 4rem);
+	position: sticky;
+	top: 4rem;
+	/* top must be 4rem equal to height of header nav bar not 0 rem. it yield different thing when you scrolled*/
+}
+
+.closebtn {
+	width: 2.5rem;
+	display: none;
+	cursor: pointer;
+}
+
+@media (max-width: 768px) {
+	.closebtn {
+		display: block;
+	}
+}
+
+
+#sidebar_inject a {
+	text-decoration: none;
+	color: #999;
+	display: block;
+}
+
+@media (max-width: 768px) {
+	#sidebar_inject {
+		position: fixed;
+		left: 0px;
+		top: 0px;
+		z-index: 2;
+		width: 0px;
+		overflow: hidden;
+		transition: width 0.2s;
+		height: 100vh
+	}
+
+	#sidebar_inject.open {
+		width: 200px;
+	}
+}

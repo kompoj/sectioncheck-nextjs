@@ -1,21 +1,18 @@
-import Head from 'next/head'
+﻿import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 import Nav from "/components/Nav.js"
-import Sidebar from "../components/Sidebar.js"
+import Sidebar from "/components/Sidebar.js"
 
-export default function Home() {
+export default function about() {
 	return (
 		<>
-
 			<Nav />
-			<div className="not-nav-bar">
+			<div class="not-nav-bar">
 				<Sidebar />
-				<div>WELCOME</div>
+				about
 			</div>
-
-
 		</>
 	)
 }
