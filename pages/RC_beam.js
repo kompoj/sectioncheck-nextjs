@@ -7,10 +7,13 @@ import Nav from "/components/Nav.js"
 import Sidebar from '../components/Sidebar.js'
 import Footer from "../components/Footer.js"
 
+import scriptsource from "../calculationscript/RCbeamxx.js"
+
 
 export default function RC_beam() {
 	return (
 		<>
+			{console.log("jkjsk")}
 			<Head>
 				<meta charset="UTF-8" />
 				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -19,7 +22,7 @@ export default function RC_beam() {
 			</Head>
 
 			<Script src="https://cdn.plot.ly/plotly-2.12.1.min.js" strategy="beforeInteractive"></Script>
-			<Script type="text/javascript" src="/RCbeamxx.js" strategy="afterInteractive"></Script>
+			<Script type="text/javascript" src={scriptsource} strategy="worker"></Script>
 
 
 
