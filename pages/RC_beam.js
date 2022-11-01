@@ -5,25 +5,19 @@ import Script from 'next/script'
 
 import Nav from "/components/Nav.js"
 import Sidebar from '../components/Sidebar.js'
+import Footer from "../components/Footer.js"
 
 
 export default function RC_beam() {
 	return (
 		<>
-
 			<Head>
 				<meta charset="UTF-8" />
 				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<title>SectionCheck</title>
-
-				<link rel="preconnect" href="https://fonts.googleapis.com" />
-				<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-				<link
-					href="https://fonts.googleapis.com/css2?family=Caveat&family=Open+Sans:wght@100;200;300;400;500;600;700&family=Sarabun:wght@100;200;300;400;500;600;700&display=swap"
-					rel="stylesheet" />
-
 			</Head>
+
 			<Script src="https://cdn.plot.ly/plotly-2.12.1.min.js" strategy="beforeInteractive"></Script>
 			<Script type="text/javascript" src="/RCbeamxx.js" strategy="afterInteractive"></Script>
 
@@ -244,7 +238,7 @@ export default function RC_beam() {
 								</div>
 								<div className="output-grid">
 									<div className="eachOutput">
-										<label data-language='heightюความสูง'>As':</label>
+										<label data-language='heightюความสูง'>As&#39;:</label>
 										<div>
 											<div id="height" className="outputBox" data-storepath='positiveюAs_prime' data-round="2">
 											</div>
@@ -252,7 +246,7 @@ export default function RC_beam() {
 										</div>
 									</div>
 									<div className="eachOutput">
-										<label data-language='heightюความสูง'>ρ':</label>
+										<label data-language='heightюความสูง'>ρ&#39;:</label>
 										<div>
 											<div id="height" className="outputBox" data-storepath='positiveюρ_prime' data-round="5"></div>
 											<label></label>
@@ -338,10 +332,8 @@ export default function RC_beam() {
 			</div>
 
 
-			{/* <section id="footer-inject"></section>
-					<link rel="stylesheet" href="/components/footer.css">
-						<script src="/components/footer-inject.js"></script> */}
 
+			<Footer />
 		</>
 	)
 }
