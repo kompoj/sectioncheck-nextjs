@@ -5,6 +5,7 @@ import Script from 'next/script'
 
 import Nav from "/components/Nav.js"
 import Sidebar from '../components/Sidebar.js'
+import Footer from "../components/Footer.js"
 
 
 export default function RC_beam() {
@@ -337,9 +338,8 @@ export default function RC_beam() {
 			</div>
 
 
-			{/* <section id="footer-inject"></section>
-					<link rel="stylesheet" href="/components/footer.css">
-						<script src="/components/footer-inject.js"></script> */}
+			<Footer />
+
 
 		</>
 	)

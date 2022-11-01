@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 
 import Nav from "/components/Nav.js"
 import Sidebar from "../components/Sidebar.js"
+import Footer from "../components/Footer.js"
 
 export default function Home() {
 	return (
@@ -14,7 +15,7 @@ export default function Home() {
 				<Sidebar />
 				<div>WELCOME</div>
 			</div>
-
+			<Footer />
 
 		</>
 	)
