@@ -5,6 +5,9 @@ import SidebarStyles from '/styles/Sidebar.module.css'
 
 const Nav = () => {
 
+
+
+
 	return (
 		<nav className={styles.nav}>
 			<svg className={styles.hamburger} xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
