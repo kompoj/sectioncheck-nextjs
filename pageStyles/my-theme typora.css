@@ -1,0 +1,218 @@
+﻿/* @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@100;400;500;600;700&display=swap');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 16px !important;
+}
+
+
+body {
+	font-family: "Sarabun", "SF UI Text", -apple-system, -apple-system-body, BlinkMacSystemFont, " Segoe UI", Helvetica, Arial, sans-serif, " Apple Color Emoji", " Segoe UI Emoji", " Segoe UI Symbol";
+	color: #2a3949;
+	line-height: 1.8;
+	background-color: #fafaf8;
+	padding-top: 1px;
+} */
+
+
+#write {
+	max-width: 900px;
+	margin: 0 auto;
+	/* padding: 0 200px; */
+}
+
+#write>:not(h1):not(h2):not(h3):first-child {
+	margin-top: 30px;
+}
+
+a {
+	color: #4183c4
+}
+
+#write h1,
+#write h2,
+#write h3,
+#write h4,
+#write h5,
+#write h6 {
+	font-weight: 500;
+}
+
+#write h1 {
+	text-align: center;
+	font-size: 2.4rem;
+	margin-top: 5rem;
+	margin-bottom: 3rem;
+}
+
+#write h2 {
+	font-size: 1.8rem;
+	/* padding-left: 9px; */
+	/* border-left: 5px solid #cce5ff; */
+	margin-top: 2.5rem;
+	margin-bottom: 0.8rem;
+}
+
+#write h3 {
+	font-size: 1.6rem;
+	margin-top: 2rem;
+	margin-bottom: 0.6rem;
+}
+
+/* h3:before {
+	content: '';
+	border-radius: 50%;
+	width: 7px;
+	height: 7px;
+	background-color: #9ed0ff;
+	display: inline-block;
+	vertical-align: middle;
+	margin-bottom: .18em;
+	margin-right: 8px
+} */
+
+#write>h3.md-focus:before,
+#write>h4.md-focus:before {
+	background-color: transparent;
+	width: auto;
+	height: auto
+}
+
+#write h4 {
+	font-size: 1.5rem
+}
+
+/* h4:before {
+	background-color: #9ed0ff;
+	content: '';
+	width: 5px;
+	display: inline-block;
+	height: 1.5px;
+	vertical-align: middle;
+	margin-bottom: .18em;
+	margin-right: 8px
+} */
+
+#write h5 {
+	font-size: 1.5rem
+}
+
+#write h6 {
+	font-size: 1.5rem;
+	color: #777
+}
+
+
+#write li p {
+	margin-bottom: 0;
+}
+
+#write ol,
+#write ul {
+	margin-top: 0;
+}
+
+/* p+ol,
+p+ul {
+	margin-bottom: 0 !important;
+} */
+
+
+
+#write blockquote {
+	border-left: 4px dotted #e5e8e8;
+	padding: 0 12px;
+	color: #444;
+}
+
+#write blockquote blockquote {
+	padding-right: 0
+}
+
+#write code,
+#write tt {
+	margin: 0 2px;
+	padding: 2px 4px;
+	background-color: #e2f0ff
+}
+
+#write figure {
+	width: 100%;
+	overflow: auto;
+}
+
+#write table {
+	width: 100px;
+
+	padding: 0;
+	word-break: initial;
+	border-collapse: collapse;
+	border-spacing: 0;
+	/* width: 100%; */
+	overflow: auto;
+	page-break-inside: auto;
+	text-align: left
+}
+
+
+#write table tr {
+	border-top: 1px solid #dadfe6;
+	margin: 0;
+	padding: 0
+}
+
+#write table tr th {
+	background-color: #ecf5ff
+}
+
+#write table tr th,
+#write table tr td {
+	border: 1px solid #dadfe6;
+	text-align: left;
+	margin: 0;
+	padding: 6px 13px
+}
+
+#write table tr td:first-child {
+	/* background-color: #ecf5ff */
+}
+
+
+
+@media print {
+	@page {
+		size: A4;
+	}
+
+	html,
+	body {
+		width: 210mm;
+		height: 297mm;
+		font-size: 12px;
+		background: #FFF;
+		overflow: visible;
+	}
+
+	/* body {
+		padding-top: 15mm;
+	} */
+
+	h1 {
+		page-break-before: always !important;
+		margin-top: 0 !important;
+	}
+
+	pre,
+	table {
+		page-break-inside: avoid
+	}
+
+	pre {
+		word-wrap: break-word
+	}
+}

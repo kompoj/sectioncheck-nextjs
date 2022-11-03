@@ -1,7 +1,7 @@
-﻿import styles from '/styles/Sidebar.module.css'
+﻿import styles from '/componentStyles/Sidebar.module.css'
 import Link from 'next/link'
 
-import NavStyles from '../styles/Nav.module.css'
+import NavStyles from '../componentStyles/Nav.module.css'
 
 const Sidebar = () => {
 	console.log(styles.closebtn)
@@ -31,7 +31,7 @@ const Sidebar = () => {
 
 			<a href="/RC_beam">RC beam (a tag)</a>
 			<Link href="/RC_beam">RC beam (Link tag)</Link>
-			{/* <Link href="/steel wide flange.html">steel wide flange</Link> */}
+			<Link href="/steel_wide_flange">steel wide flange</Link>
 		</div>
 	)
 }

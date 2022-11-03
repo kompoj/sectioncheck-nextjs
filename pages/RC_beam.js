@@ -1,6 +1,5 @@
 ﻿import Head from 'next/head'
 import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 import Script from 'next/script'
 
 import Nav from "/components/Nav.js"
@@ -8,6 +7,8 @@ import Sidebar from '../components/Sidebar.js'
 import Footer from "../components/Footer.js"
 
 // const scriptpath = require("/a/RCbeamxu.js")
+
+import pagestyles from '../pageStyles/RC_beam.module.css'
 
 
 export default function RC_beam() {
@@ -39,7 +40,6 @@ export default function RC_beam() {
 
 
 			<Nav />
-
 
 			<div className="not-nav-bar">
 
@@ -98,8 +98,8 @@ export default function RC_beam() {
 					<div className="accordion">
 						<h2 className="accordion-header" data-language='dimensionюขนาด'>dimension</h2>
 						<div className="accordion-content">
-							<div className="accordion-content-inner input-output-grid">
-								<div className="input-grid">
+							<div className={`accordion-content-inner ${pagestyles.input_output_grid}`}>
+								<div className={pagestyles.input_grid}>
 
 									<div className="eachInput">
 										<label data-language='heightюความสูง'>height:</label>
@@ -141,7 +141,7 @@ export default function RC_beam() {
 									</div>
 								</div>
 
-								<div className="output-grid">
+								<div className={pagestyles.output_grid}>
 									{/* <!-- <div className="eachOutput">
 											<label data-language='heightюความสูง'>height:</label>
 											<div>
@@ -157,8 +157,8 @@ export default function RC_beam() {
 					<div className="accordion">
 						<h2 className="accordion-header" data-language='steel barюเหล็กเสริม'>steel bar</h2>
 						<div className="accordion-content">
-							<div className="accordion-content-inner input-output-grid">
-								<div className="input-grid">
+							<div className={`accordion-content-inner ${pagestyles.input_output_grid}`}>
+								<div className={pagestyles.input_grid}>
 									<h3>topbarFirstLayer</h3>
 									<div className=" eachInput">
 										<label data-language='quantityюจำนวน'>quantity:</label>
@@ -249,7 +249,7 @@ export default function RC_beam() {
 										</div>
 									</div>
 								</div>
-								<div className="output-grid">
+								<div className={pagestyles.output_grid}>
 									<div className="eachOutput">
 										<label data-language='heightюความสูง'>As':</label>
 										<div>
@@ -288,8 +288,8 @@ export default function RC_beam() {
 					<div className="accordion">
 						<h2 className="accordion-header" data-language='material propertiesюวัสดุ'>material properties</h2>
 						<div className="accordion-content">
-							<div className="accordion-content-inner input-output-grid">
-								<div className="input-grid">
+							<div className={`accordion-content-inner ${pagestyles.input_output_grid}`}>
+								<div className={pagestyles.input_grid}>
 									<div className="eachInput">
 										<label data-language='concrete strengthюกำลัง'>concrete strength:</label>
 										<div>
@@ -319,7 +319,7 @@ export default function RC_beam() {
 									</div>
 
 								</div>
-								<div className="output-grid">
+								<div className={pagestyles.output_grid}>
 									<div className="eachOutput">
 										<label>β1:</label>
 										<div>
