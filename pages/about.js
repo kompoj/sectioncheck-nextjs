@@ -30,14 +30,14 @@ export default function about() {
 							</a>
 						</p>
 						<p>
-							<a href="https://support.typora.io/Links/" target="_blank" className="url">
+							<a href="https://support.typora.io/Links/" target="_blank" rel="noreferrer" className="url">
 								https://support.typora.io/Links/
 							</a>
 						</p>
 						<p>
 							<a
 								href="https://www.youtube.com/watch?v=_bQSL3q5S34&ab_channel=TNNOnline"
-								target="_blank"
+								target="_blank" rel="noreferrer"
 								className="url"
 							>
 								https://www.youtube.com/watch?v=_bQSL3q5S34&amp;ab_channel=TNNOnline
@@ -530,7 +530,7 @@ export default function about() {
 						<p>ควรสวมใส่กางเกงขายาว</p>
 						<h1>บทที่ 2 ตาราง และ blockquote</h1>
 						<h2>ลองพิมพ์ตาราง</h2>
-						<figure>
+						<div className="table">
 							<table>
 								<thead>
 									<tr>
@@ -549,7 +549,7 @@ export default function about() {
 										<td>aa</td>
 										<td>aa</td>
 										<td style={{ textAlign: "left" }}>a</td>
-										<td>kjkjkjkjkjkjkjkkkkkkkkkkkkkkkkkkkkkkkkkk</td>
+										<td>kjkj kjkjkjkj kjkkkkkk kkkkkkk kkkk kkkk kkk kk</td>
 										<td>&nbsp;</td>
 										<td>&nbsp;</td>
 										<td>&nbsp;</td>
@@ -559,7 +559,7 @@ export default function about() {
 										<td>dfddfdfdfdfdfd</td>
 										<td>aa</td>
 										<td style={{ textAlign: "left" }}>kkkkkkkk</td>
-										<td>ddddddddddddddddddddddd</td>
+										<td>dd dd ddd dddd dddddd ddd ddd</td>
 										<td>&nbsp;</td>
 										<td>&nbsp;</td>
 										<td>&nbsp;</td>
@@ -587,7 +587,7 @@ export default function about() {
 									</tr>
 								</tbody>
 							</table>
-						</figure>
+						</div>
 						<h2>blockquote</h2>
 						<blockquote>
 							<p>การบ้าน</p>

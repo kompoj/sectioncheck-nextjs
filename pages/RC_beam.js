@@ -251,7 +251,7 @@ export default function RC_beam() {
 								</div>
 								<div className={pagestyles.output_grid}>
 									<div className="eachOutput">
-										<label data-language='heightюความสูง'>As':</label>
+										<label data-language='heightюความสูง'>As&#39;:</label>
 										<div>
 											<div id="height" className="outputBox" data-storepath='positiveюAs_prime' data-round="2">
 											</div>
@@ -259,7 +259,7 @@ export default function RC_beam() {
 										</div>
 									</div>
 									<div className="eachOutput">
-										<label data-language='heightюความสูง'>ρ':</label>
+										<label data-language='heightюความสูง'>ρ&#39;:</label>
 										<div>
 											<div id="height" className="outputBox" data-storepath='positiveюρ_prime' data-round="5"></div>
 											<label></label>
