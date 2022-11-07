@@ -64,7 +64,7 @@ export default Nav`
 			</div>
 
 			<div style={{ width: 1000, margin: "50px auto" }}>
-				<p>this method struck it's text into HTML view source</p>
+				<p>this method struck it&#39;npm s text into HTML view source</p>
 				<pre>
 					<code className="language-javascript">
 						{thisiscode}
@@ -86,7 +86,7 @@ export default Nav`
 				</pre>
 			</div>
 
-			<script src="https://gist.github.com/kompoj/da371c847eeb91cc2b0dabdf3c0c14a4.js"></script>
+			<script defer src="https://gist.github.com/kompoj/da371c847eeb91cc2b0dabdf3c0c14a4.js"></script>
 		</>
 	)
 }
