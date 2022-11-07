@@ -21,7 +21,7 @@ const Nav = () => {
 export default Nav`
 	return (
 		<>
-			<div style={{ width: 1000, margin: "100px auto" }}>
+			<div style={{ width: 1000, margin: "50px auto" }}>
 				<pre >
 					<code className="language-javascript" lang="javascript">
 						import styles from &#39;/componentStyles/Nav.module.css&#39;{"\n"}import Link
@@ -63,7 +63,8 @@ export default Nav`
 				</pre>
 			</div>
 
-			<div style={{ width: 1000, margin: "100px auto" }}>
+			<div style={{ width: 1000, margin: "50px auto" }}>
+				<p>this method struck it's text into HTML view source</p>
 				<pre>
 					<code className="language-javascript">
 						{thisiscode}
@@ -71,7 +72,7 @@ export default Nav`
 				</pre>
 			</div>
 
-			<div style={{ width: 1000, margin: "100px auto" }}>
+			<div style={{ width: 1000, margin: "50px auto" }}>
 				<pre data-src="/RandChar.ahk" data-download-link className="language-autohotkey">
 					<code className="language-autohotkey">
 					</code>
@@ -84,6 +85,8 @@ export default Nav`
 					</code>
 				</pre>
 			</div>
+
+			<script src="https://gist.github.com/kompoj/da371c847eeb91cc2b0dabdf3c0c14a4.js"></script>
 		</>
 	)
 }
