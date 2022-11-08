@@ -6,9 +6,11 @@ import Nav from "/components/Nav.js"
 import Sidebar from '../components/Sidebar.js'
 import Footer from "../components/Footer.js"
 
-// const scriptpath = require("/a/RCbeamxu.js")
-
 import pagestyles from '../pageStyles/RC_beam.module.css'
+
+
+import EachInput from '../components/EachInput.js'
+import EachOutput from '../components/EachOutput.js'
 
 
 export default function RC_beam() {
@@ -71,20 +73,10 @@ export default function RC_beam() {
 					</label>
 
 
-					<div className="eachOutput">
-						<label>negative moment capacity:</label>
-						<div>
-							<div id="height" className="outputBox" data-storepath='negativeюøMnю0' data-round="2"></div>
-							<label data-unit="2юkNmю1юkgm" data-storepath='negativeюøMnю1'>kNm</label>
-						</div>
-					</div>
-					<div className="eachOutput">
-						<label>positive moment capacity:</label>
-						<div>
-							<div id="height" className="outputBox" data-storepath='positiveюøMnю0' data-round="2"></div>
-							<label data-unit="2юkNmю1юkgm" data-storepath='positiveюøMnю1'>kNm</label>
-						</div>
-					</div>
+					<EachOutput labelName="negative moment capacity" data_storepath="negativeюøMnю0" data_round="2" unit="kNm" data_unit="2юkNmю1юkgm" data_unit_storepath="negativeюøMnю1" />
+					<EachOutput labelName="positive moment capacity" data_storepath="positiveюøMnю0" data_round="2" unit="kNm" data_unit="2юkNmю1юkgm" data_unit_storepath="positiveюøMnю1" />
+
+
 
 					<div className="accordion">
 						<h2 className="accordion-header" data-language='dimensionюขนาด'>dimension</h2>
@@ -92,53 +84,13 @@ export default function RC_beam() {
 							<div className={`accordion-content-inner ${pagestyles.input_output_grid}`}>
 								<div className={pagestyles.input_grid}>
 
-									<div className="eachInput">
-										<label data-language='heightюความสูง'>height:</label>
-										<div>
+									<EachInput labelName="height" placeholder="height" data_storepath="dimensionюheight" min="0" step="10" unit="mm" />
+									<EachInput labelName="width" placeholder="width" data_storepath="dimensionюwidth" min="0" step="10" unit="mm" />
+									<EachInput labelName="covering" placeholder="covering" data_storepath="dimensionюcovering" min="0" step="5" unit="mm" />
+									<EachInput labelName="clear distance between bar layer" placeholder="" data_storepath="dimensionюclearDistanceBetweenBarLayer" min="0" step="5" unit="mm" />
 
-											<input id="height" className="inputBox" type="number" placeholder="height"
-												data-storepath='dimensionюheight' min="0" step="10" />
-
-											<label>mm</label>
-										</div>
+									<div className={pagestyles.output_grid}>
 									</div>
-
-									<div className="eachInput">
-										<label data-language='widthюความกว้าง'>width:</label>
-										<div>
-											<input id="width" className="inputBox" type="number" placeholder="width"
-												data-storepath='dimensionюwidth' min="0" step="10" />
-											<label>mm</label>
-										</div>
-									</div>
-
-									<div className="eachInput">
-										<label data-language='coveringюระยะหุ้ม'>covering:</label>
-										<div>
-											<input id="covering" className="inputBox" type="number" placeholder="covering"
-												data-storepath='dimensionюcovering' min="0" step="5" />
-											<label>mm</label>
-										</div>
-									</div>
-
-									<div className="eachInput">
-										<label data-language='clear distance between bar layerюระยะ'>clear distance between bar
-											layer:</label>
-										<div>
-											<input id="covering" className="inputBox" type="number" placeholder="clear distance"
-												data-storepath='dimensionюclearDistanceBetweenBarLayer' min="0" step="5" />
-											<label>mm</label>
-										</div>
-									</div>
-								</div>
-
-								<div className={pagestyles.output_grid}>
-									{/* <!-- <div className="eachOutput">
-											<label data-language='heightюความสูง'>height:</label>
-											<div>
-												<div id="height" className="outputBox" data-storepath='dimensionюheight'>gross area Ag=bd</div>
-												<label>mm</label>
-											</div> --> */}
 								</div>
 							</div>
 						</div>
@@ -151,125 +103,35 @@ export default function RC_beam() {
 							<div className={`accordion-content-inner ${pagestyles.input_output_grid}`}>
 								<div className={pagestyles.input_grid}>
 									<h3>topbarFirstLayer</h3>
-									<div className=" eachInput">
-										<label data-language='quantityюจำนวน'>quantity:</label>
-										<div>
-											<input id="topbarNumber" className="inputBox" type="number"
-												data-storepath='topbarюfirstLayerList' data-command="changeArrayLength" min="0" max="20" />
-											<label></label>
-										</div>
-									</div>
-									<div className="eachInput">
-										<label data-language='diameterюเส้นผ่านศูนย์กลาง'>diameter:</label>
-										<div>
-											<input id="topbarDiameter" className="inputBox" type="number"
-												data-storepath='topbarюfirstLayerList' data-command="changeBarDiameter" min="0" max="40"
-												placeholder="dia." />
-											<label>mm</label>
-										</div>
-									</div>
+
+									<EachInput labelName="quantity" placeholder="quantity" data_storepath="topbarюfirstLayerList" data_command="changeArrayLength" min="0" max="20" />
+									<EachInput labelName="diameter" placeholder="dia." data_storepath="topbarюfirstLayerList" data_command="changeBarDiameter" min="0" max="40" unit="mm" />
+
 
 									<h3>topbarSecondLayer</h3>
-									<div className="eachInput">
-										<label data-language='quantityюจำนวน'>quantity:</label>
-										<div>
-											<input id="topbarNumber" className="inputBox" type="number"
-												data-storepath='topbarюsecondLayerList' data-command="changeArrayLength" min="0"
-												max="20" />
-											<label></label>
-										</div>
-									</div>
-									<div className="eachInput">
-										<label data-language='diameterюเส้นผ่านศูนย์กลาง'>diameter:</label>
-										<div>
-											<input id="topbarDiameter" className="inputBox" type="number"
-												data-storepath='topbarюsecondLayerList' data-command="changeBarDiameter" min="0" max="40"
-												placeholder="dia." />
-											<label>mm</label>
-										</div>
-									</div>
+									<EachInput labelName="quantity" placeholder="quantity" data_storepath="topbarюsecondLayerList" data_command="changeArrayLength" min="0" max="20" />
+									<EachInput labelName="diameter" placeholder="dia." data_storepath="topbarюsecondLayerList" data_command="changeBarDiameter" min="0" max="40" unit="mm" />
 
 
 									<h3>bottombarSecondLayer</h3>
-									<div className="eachInput">
-										<label data-language='quantityюจำนวน'>quantity:</label>
-										<div>
-											<input id="bottombarNumber" className="inputBox" type="number"
-												data-storepath='bottombarюsecondLayerList' data-command="changeArrayLength" min="0"
-												max="20" />
-											<label></label>
-										</div>
-									</div>
-									<div className="eachInput">
-										<label data-language='diameterюเส้นผ่านศูนย์กลาง'>diameter:</label>
-										<div>
-											<input id="bottombarDiameter" className="inputBox" type="number"
-												data-storepath='bottombarюsecondLayerList' data-command="changeBarDiameter" min="0"
-												max="40" placeholder="dia." />
-											<label>mm</label>
-										</div>
-									</div>
+									<EachInput labelName="quantity" placeholder="quantity" data_storepath="bottombarюsecondLayerList" data_command="changeArrayLength" min="0" max="20" />
+									<EachInput labelName="diameter" placeholder="dia." data_storepath="bottombarюsecondLayerList" data_command="changeBarDiameter" min="0" max="40" unit="mm" />
+
 
 									<h3>bottombarFirstLayer</h3>
-									<div className="eachInput">
-										<label data-language='quantityюจำนวน'>quantity:</label>
-										<div>
-											<input id="bottombarNumber" className="inputBox" type="number"
-												data-storepath='bottombarюfirstLayerList' data-command="changeArrayLength" min="0"
-												max="20" />
-											<label></label>
-										</div>
-									</div>
-									<div className="eachInput">
-										<label data-language='diameterюเส้นผ่านศูนย์กลาง'>diameter:</label>
-										<div>
-											<input id="bottombarDiameter" className="inputBox" type="number"
-												data-storepath='bottombarюfirstLayerList' data-command="changeBarDiameter" min="0"
-												max="40" placeholder="dia." />
-											<label>mm</label>
-										</div>
-									</div>
+									<EachInput labelName="quantity" placeholder="quantity" data_storepath="bottombarюfirstLayerList" data_command="changeArrayLength" min="0" max="20" />
+									<EachInput labelName="diameter" placeholder="dia." data_storepath="bottombarюfirstLayerList" data_command="changeBarDiameter" min="0" max="40" unit="mm" />
 
 									<h3>stirrup</h3>
-									<div className="eachInput">
-										<label data-language='diameterюเส้นผ่านศูนย์กลาง'>diameter:</label>
-										<div>
-											<input id="bottombarDiameter" className="inputBox" type="number" data-storepath='stirrup'
-												data-command="changeBarDiameter" min="0" max="40" placeholder="dia." />
-											<label>mm</label>
-										</div>
-									</div>
+									<EachInput labelName="diameter" placeholder="dia." data_storepath="stirrup" data_command="changeArrayLength" min="0" max="40" />
+
+
 								</div>
 								<div className={pagestyles.output_grid}>
-									<div className="eachOutput">
-										<label data-language='heightюความสูง'>As&#39;:</label>
-										<div>
-											<div id="height" className="outputBox" data-storepath='positiveюAs_prime' data-round="2">
-											</div>
-											<label>mm2</label>
-										</div>
-									</div>
-									<div className="eachOutput">
-										<label data-language='heightюความสูง'>ρ&#39;:</label>
-										<div>
-											<div id="height" className="outputBox" data-storepath='positiveюρ_prime' data-round="5"></div>
-											<label></label>
-										</div>
-									</div>
-									<div className="eachOutput">
-										<label data-language='heightюความสูง'>As:</label>
-										<div>
-											<div id="height" className="outputBox" data-storepath='positiveюAs' data-round="2"></div>
-											<label>mm2</label>
-										</div>
-									</div>
-									<div className="eachOutput">
-										<label data-language='heightюความสูง'>ρ:</label>
-										<div>
-											<div id="height" className="outputBox" data-storepath='positiveюρ' data-round="5"></div>
-											<label></label>
-										</div>
-									</div>
+									<EachOutput labelName="As&#39;" data_storepath="positiveюAs_prime" data_round="2" unit="mm2" />
+									<EachOutput labelName="ρ&#39;" data_storepath="positiveюρ_prime" data_round="5" unit="" />
+									<EachOutput labelName="As" data_storepath="positiveюAs" data_round="5" unit="" />
+									<EachOutput labelName="ρ" data_storepath="positiveюρ" data_round="5" unit="" />
 								</div>
 							</div>
 						</div>
@@ -281,52 +143,18 @@ export default function RC_beam() {
 						<div className="accordion-content">
 							<div className={`accordion-content-inner ${pagestyles.input_output_grid}`}>
 								<div className={pagestyles.input_grid}>
-									<div className="eachInput">
-										<label data-language='concrete strengthюกำลัง'>concrete strength:</label>
-										<div>
-											<input className="inputBox" type="number" data-storepath='materialStrengthюconcreteю0' min="0"
-												step="0.1" placeholder="f'c" />
-											<label className="unit-option" data-unit="1юMPaю0юksc"
-												data-storepath='materialStrengthюconcreteю1'>MPa</label>
-										</div>
-									</div>
-									<div className="eachInput">
-										<label data-language='steel bar strengthюกำลังเหล็กหลัก'>steel bar strength:</label>
-										<div>
-											<input className="inputBox" type="number" data-storepath='materialStrengthюsteelю0' min="0"
-												step="1" placeholder="fy" />
-											<label className="unit-option" data-unit="0юMPaю-1юksc"
-												data-storepath='materialStrengthюsteelю1'>MPa</label>
-										</div>
-									</div>
-									<div className="eachInput">
-										<label data-language='stirrup strengthюกำลังเหล็กปลอก'>stirrup strength:</label>
-										<div>
-											<input className="inputBox" type="number" data-storepath='materialStrengthюstirrupю0' min="0"
-												step="1" placeholder="strength" />
-											<label className="unit-option" data-unit="0юMPaю-1юksc"
-												data-storepath='materialStrengthюstirrupю1'>MPa</label>
-										</div>
-									</div>
+									<EachInput labelName="concrete strength" placeholder="f&#39;c" data_storepath="materialStrengthюconcreteю0" unit="MPa" min="0" step="0.1" data_unit="1юMPaю0юksc" data_unit_storepath="materialStrengthюconcreteю1" />
+									<EachInput labelName="steel bar strength" placeholder="fy" data_storepath="materialStrengthюsteelю0" unit="MPa" min="0" step="1" data_unit="0юMPaю-1юksc" data_unit_storepath="materialStrengthюsteelю1" />
+									<EachInput labelName="stirrup strength" placeholder="strength" data_storepath="materialStrengthюstirrupю0" unit="MPa" min="0" step="1" data_unit="0юMPaю-1юksc" data_unit_storepath="materialStrengthюstirrupю1" />
+
+
 
 								</div>
 								<div className={pagestyles.output_grid}>
-									<div className="eachOutput">
-										<label>β1:</label>
-										<div>
-											<div id="height" className="outputBox" data-storepath='materialStrengthюβ1' data-round="2">
-											</div>
-											<label></label>
-										</div>
-									</div>
-									<div className="eachOutput">
-										<label>εy:</label>
-										<div>
-											<div id="height" className="outputBox" data-storepath='materialStrengthюεy' data-round="5">
-											</div>
-											<label></label>
-										</div>
-									</div>
+
+									<EachOutput labelName="β1" data_storepath="materialStrengthюβ1" data_round="2" unit="" />
+									<EachOutput labelName="εy" data_storepath="materialStrengthюεy" data_round="5" unit="" />
+
 								</div>
 							</div>
 						</div>
