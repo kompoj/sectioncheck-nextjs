@@ -37,20 +37,12 @@ export default function shallow_foundation() {
 			<div className="not-nav-bar">
 				<Sidebar />
 				<div className="main-content-area">
-					<div className="eachInput">
-						<label data-language='heightюความสูง'>height:</label>
-						<div>
-
-							<input id="height" className="inputBox" type="number" placeholder="height"
-								data-storepath='dimensionюheight' min="0" step="10" />
-
-							<label>mm</label>
-						</div>
-					</div>
-					<EachInput label="number1" placeholder="PH1" data_storepath="number1ю" min="0" max="20" step="0.25" unit="N" />
-					<EachInput label="number2" placeholder="PH2" data_storepath="number2ю" min="0" max="120" step="10" unit="m" />
-					<EachOutput label="multiplication" data_storepath="multiplicationю" data_round="2" unit="Nm" />
-					<EachOutput label="add" data_storepath="addю" data_round="2" unit="N+m" />
+					<EachInput label="number1" placeholder="PH1" data_storepath="initialюnumber1" min="0" max="120" step="10" unit="N" />
+					<EachInput label="number2" placeholder="PH2" data_storepath="initialюnumber2" min="0" max="20" step="0.25" unit="m" />
+					<EachOutput label="multiplication" data_storepath="resultюmultiplication" data_round="2" unit="Nm" />
+					<EachOutput label="addition" data_storepath="resultюaddition" data_round="2" unit="N+m" />
+					<EachOutput label="subtraction" data_storepath="resultюsubtraction" data_round="2" unit="N-m" />
+					<EachOutput label="division" data_storepath="resultюdivision" data_round="2" unit="N/m" />
 				</div>
 			</div>
 			<Footer />

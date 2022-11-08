@@ -2,7 +2,7 @@
 
 
 const EachInput = (props) => {
-	console.log(props)
+	// console.log(props)
 	return (
 		<div className="eachInput">
 			<label>{props.label}</label>

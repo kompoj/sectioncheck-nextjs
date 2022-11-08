@@ -2,7 +2,6 @@
 
 
 const EachOutput = (props) => {
-	console.log(props)
 	return (
 		<div className="eachOutput">
 			<label>{props.label}</label>
