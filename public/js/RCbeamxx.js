@@ -153,6 +153,7 @@ kN_kg_switch.addEventListener('click', function () {
 
 		let unitArray = El.getAttribute("data-unit").split("ю")
 		let newUnit
+		let newConvertedValue
 
 		if (kN_kg_switch.getAttribute("data-unitToggle") == "kN") {
 			//get and set target(new) unit

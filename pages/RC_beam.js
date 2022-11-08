@@ -130,7 +130,7 @@ export default function RC_beam() {
 								<div className={pagestyles.output_grid}>
 									<EachOutput labelName="As&#39;" data_storepath="positiveюAs_prime" data_round="2" unit="mm2" />
 									<EachOutput labelName="ρ&#39;" data_storepath="positiveюρ_prime" data_round="5" unit="" />
-									<EachOutput labelName="As" data_storepath="positiveюAs" data_round="5" unit="" />
+									<EachOutput labelName="As" data_storepath="positiveюAs" data_round="2" unit="mm2" />
 									<EachOutput labelName="ρ" data_storepath="positiveюρ" data_round="5" unit="" />
 								</div>
 							</div>
