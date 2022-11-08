@@ -12,7 +12,7 @@ import pagestyles from '../pageStyles/RC_beam.module.css'
 import EachInput from '../components/EachInput.js'
 import EachOutput from '../components/EachOutput.js'
 
-// this should be new commit
+// this should be new commit2
 
 export default function RC_beam() {
 
