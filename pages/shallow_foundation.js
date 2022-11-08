@@ -28,7 +28,7 @@ export default function shallow_foundation() {
 
 			</Head>
 			{/* <Script src="https://cdn.plot.ly/plotly-2.12.1.min.js" strategy="beforeInteractive"></Script> */}
-			<Script type="text/javascript" src="/js/shallow foundationxx.js" strategy="afterInteractive"></Script>
+			<Script type="module" src="/js/shallow foundationxx.js" strategy="afterInteractive"></Script>
 
 			<Nav />
 

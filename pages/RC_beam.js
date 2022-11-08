@@ -30,7 +30,7 @@ export default function RC_beam() {
 
 			</Head>
 			<Script src="https://cdn.plot.ly/plotly-2.12.1.min.js" strategy="beforeInteractive"></Script>
-			<Script type="text/javascript" src="/js/RCbeamxx.js" strategy="afterInteractive"></Script>
+			<Script type="module" src="/js/RCbeamxx.js" strategy="afterInteractive"></Script>
 
 
 
