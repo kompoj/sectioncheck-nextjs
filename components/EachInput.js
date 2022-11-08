@@ -6,8 +6,7 @@ const EachInput = (props) => {
 	return (
 		<div className="eachInput">
 			<label>{props.label}</label>
-			<div>
-
+			<div className="flex-align-center">
 				<input className="inputBox" type="number" placeholder={props.placeholder}
 					data-storepath={props.data_storepath} min={props.min} max={props.max} step={props.step} />
 

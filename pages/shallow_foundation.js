@@ -47,9 +47,10 @@ export default function shallow_foundation() {
 							<label>mm</label>
 						</div>
 					</div>
-					<EachInput label="asdf" placeholder="PH1" data_storepath="ю" min="0" max="20" step="0.25" unit="kg" />
-					<EachInput label="ghjk" placeholder="PH2" data_storepath="ю" min="0" max="120" step="10" unit="N" />
-					<EachOutput label="multiplication" data_storepath="ю" />
+					<EachInput label="number1" placeholder="PH1" data_storepath="number1ю" min="0" max="20" step="0.25" unit="N" />
+					<EachInput label="number2" placeholder="PH2" data_storepath="number2ю" min="0" max="120" step="10" unit="m" />
+					<EachOutput label="multiplication" data_storepath="multiplicationю" data_round="2" unit="Nm" />
+					<EachOutput label="add" data_storepath="addю" data_round="2" unit="N+m" />
 				</div>
 			</div>
 			<Footer />
