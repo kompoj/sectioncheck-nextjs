@@ -3,7 +3,7 @@
 } */
 
 .nav {
-	background: url("../global assets/bgnoise-blueslate.png");
+	background: url("/img/bgnoise-blueslate.png");
 	/* background: #989ca8; */
 	height: 4rem;
 	position: sticky;

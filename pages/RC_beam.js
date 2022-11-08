@@ -27,14 +27,11 @@ export default function RC_beam() {
 					href="https://fonts.googleapis.com/css2?family=Caveat&family=Open+Sans:wght@100;200;300;400;500;600;700&family=Sarabun:wght@100;200;300;400;500;600;700&display=swap"
 					rel="stylesheet" />
 
-				{/* <script src="https://cdn.plot.ly/plotly-2.12.1.min.js"></script>
-				<script defer src={scriptpath}></script> */}
 
 			</Head>
 			<Script src="https://cdn.plot.ly/plotly-2.12.1.min.js" strategy="beforeInteractive"></Script>
-			<Script type="text/javascript" src="/RCbeamxx.js" strategy="afterInteractive"></Script>
-			{/* <Script src="https://cdn.plot.ly/plotly-2.12.1.min.js" strategy="beforeInteractive"></Script>
-			<Script type="text/javascript" src={scriptpath} strategy="afterInteractive"></Script> */}
+			<Script type="text/javascript" src="/js/RCbeamxx.js" strategy="afterInteractive"></Script>
+
 
 
 

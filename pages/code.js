@@ -78,14 +78,14 @@ export default Nav`
 			</div>
 
 			<div style={{ width: 1000, margin: "50px auto" }}>
-				<pre data-src="/RandChar.ahk" data-download-link className="language-autohotkey">
+				<pre data-src="/js/RandChar.ahk" data-download-link className="language-autohotkey">
 					<code className="language-autohotkey">
 					</code>
 				</pre>
 			</div>
 
 			<div style={{ width: 1000, height: 500, overflow: "auto", margin: "100px auto" }}>
-				<pre data-src="/gui civil.ahk" data-download-link className="language-autohotkey">
+				<pre data-src="/js/gui civil.ahk" data-download-link className="language-autohotkey">
 					<code className="language-autohotkey">
 					</code>
 				</pre>

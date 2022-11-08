@@ -50,7 +50,7 @@ html {
 body {
 	min-height: 100vh;
 	font-size: var(--font-size);
-	background: url("../global assets/bgnoise.png");
+	background: url("/img/bgnoise.png");
 }
 
 .not-nav-bar {

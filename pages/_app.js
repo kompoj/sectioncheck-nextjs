@@ -9,7 +9,7 @@ import Script from 'next/script'
 function MyApp({ Component, pageProps }) {
 	return (
 		<>
-			<Script type="text/javascript" src="/prism.js" strategy="afterInteractive"></Script>
+			<Script type="text/javascript" src="/js/prism.js" strategy="afterInteractive"></Script>
 			<Component {...pageProps} />
 		</>
 	)

@@ -7,7 +7,7 @@ const Footer = () => {
 
 	const FooterStyles = {
 		height: "400px",
-		background: `url("/bgnoise-lightblue.png")`
+		background: 'url("/img/bgnoise-lightblue.png")'
 	}
 
 	return (
