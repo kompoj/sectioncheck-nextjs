@@ -19,7 +19,7 @@ export default function RC_beam() {
 				<meta charset="UTF-8" />
 				<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-				<title>SectionCheck</title>
+				<title>RC beam-SectionCheck</title>
 
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
 				<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,13 +42,7 @@ export default function RC_beam() {
 			<Nav />
 
 			<div className="not-nav-bar">
-
-				{/* <!-- side-bar-inject --> */}
-				{/* <div id="sidebar-inject"></div> */}
 				<Sidebar />
-				{/* <link rel="stylesheet" href="/components/sidebar.css">
-						<script src=" /components/sidebar-inject.js"></script> */}
-
 				<div className="main-content-area">
 					<button id="change-language">change language</button>
 					<button id="calculateAndUpdateResult">calculateAndUpdateResult</button>

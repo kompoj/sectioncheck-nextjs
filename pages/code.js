@@ -1,4 +1,6 @@
-﻿export default function code() {
+﻿import Script from 'next/script'
+
+export default function code() {
 
 	const thisiscode = `import styles from '/componentStyles/Nav.module.css'
 import Link from 'next/link'
@@ -19,6 +21,9 @@ const Nav = () => {
 }
 
 export default Nav`
+
+
+
 	return (
 		<>
 			<div style={{ width: 1000, margin: "50px auto" }}>
@@ -64,7 +69,7 @@ export default Nav`
 			</div>
 
 			<div style={{ width: 1000, margin: "50px auto" }}>
-				<p>this method struck it&#39;npm s text into HTML view source</p>
+				<p>this method struck it&#39;s text into HTML view source</p>
 				<pre>
 					<code className="language-javascript">
 						{thisiscode}
@@ -86,7 +91,51 @@ export default Nav`
 				</pre>
 			</div>
 
-			<script defer src="https://gist.github.com/kompoj/da371c847eeb91cc2b0dabdf3c0c14a4.js"></script>
+			{/* <div suppressHydrationWarning={true}> */}
+			{/* <Script src="https://pastebin.com/embed_js/wFN21Rrd" strategy="afterInteractive"></Script>
+			<Script src="https://gist.github.com/kompoj/da371c847eeb91cc2b0dabdf3c0c14a4.js" strategy="afterInteractive"></Script> */}
+			{/* generate ERROR : Text content does not match server-rendered HTML. */}
+			{/* https://stackoverflow.com/questions/24297829/execute-write-on-doc-it-isnt-possible-to-write-into-a-document-from-an-asynchr */}
+			{/* you can't use document.write() from such a script (well technically you can, but it won't do what you want).You will need to replace any document.write() statements in that script with explicit DOM manipulations by creating the DOM elements and then inserting them into a particular parent with .appendChild() or .insertBefore() or setting .innerHTML */}
+
+
+			{/* </div> */}
+
+
+			<div id="root"></div>
+			{/* DOESN'T WORK */}
+			{/* <script>document.getElementById("root").innerHTML = "HI HI HI"</script> */}
+			{/* generate ERROR : Text content does not match server-rendered HTML. */}
+			{/* เป็นเพราะว่า react มันยังไม่ hydrate เลยเหมือนกับใส่ innerHTML เร็วเกินไป ทำให้ DOM ของ client side กับ server side มีความแตกต่างกัน */}
+
+
+			{/* DOESN'T WORK */}
+			{/* <Script strategy="beforeInteractive">
+				const text = "HI HI HI";
+				document.getElementById("root").innerHTML = text
+			</Script> */}
+
+			{/* WORK! */}
+			{/* <Script strategy="afterInteractive">
+				const texts = "Hello";
+				document.getElementById("root").innerHTML = texts
+			</Script> */}
+
+			<iframe src="https://pastebin.com/embed_iframe/wFN21Rrd" style={{ border: "none", width: "50%", height: 315 }}></iframe>
+			<iframe width="560" height="315" src="https://www.youtube.com/embed/Cb_OvX7_uMg" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
+
+			<blockquote className="imgur-embed-pub" lang="en" data-id="a/mDZrukN"  ><a href="//imgur.com/a/mDZrukN">Sea otters hold hands while sleeping, just a natural act so they don&#39;t drift apart.</a></blockquote>
+			{/* <script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script> */}
+			<Script async src="//s.imgur.com/min/embed.js" charset="utf-8"></Script>
+
+			<iframe src="https://i.imgur.com/pUbmp1d.mp4"></iframe>
+			<video controls width="250">
+
+				<source src="https://i.imgur.com/pUbmp1d.mp4"
+					type="video/webm" />
+			</video>
+			<img src="https://i.imgur.com/oXVZv4K.gif"></img>
+			<img src="https://i.imgur.com/NAcWuNb.gif"></img>
 		</>
 	)
 }
