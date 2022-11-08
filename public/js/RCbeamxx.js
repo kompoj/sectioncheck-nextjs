@@ -535,7 +535,7 @@ function redrawSVGbar() {
 			let string = ""
 			for (let index = 0; index < beamObj[TB[i]][FS[j]].length; index++) {
 				string += `<circle class='' cx='${beamObj[TB[i]][FS[j]][index].x * 1}' cy='${beamObj[TB[i]][FS[j]][index].y * 1}' r='${beamObj[TB[i]][FS[j]][index].diameter * 1 / 2}'
-						data-storepath='${TB[i]}ю^${FS[j]}ю${index}юdiameter' />`
+						data-storepath='${TB[i]}ю${FS[j]}ю${index}юdiameter' />`
 			}
 			svgBarLayerGroup.innerHTML = string
 
@@ -722,32 +722,22 @@ function redrawPositiveStrainDiagram() {
 
 
 function assign(returnObj, storepath, value, command) {
-	const unreplacedstorepath = storepath
+	// const unreplacedstorepath = storepath
 
 
 	for (let i = 0; i < storepath.length - 1; i++) {
 
-		if (storepath[i][0] != "^") {
 
-			if (!(storepath[i] in returnObj)) {
-				returnObj[storepath[i]] = {}
-			}
-			returnObj = returnObj[storepath[i]]
-			// console.log(returnObj)
-
-
-		} else if (storepath[i][0] === "^") {
-			storepath[i] = storepath[i].toString().replace("^", "")
-			// console.log(storepath[i])
-			if (!(storepath[i] in returnObj)) {
-				returnObj[storepath[i]] = []
-			}
-			returnObj = returnObj[storepath[i]]
+		if (!(storepath[i] in returnObj)) {
+			returnObj[storepath[i]] = {}
 		}
+		returnObj = returnObj[storepath[i]]
+		// console.log(returnObj)
+
 	}
 
 	// go to deepest level of storepath
-	const deepestPathName = storepath[storepath.length - 1].toString().replace("^", "")
+	const deepestPathName = storepath.at(-1).toString()
 	// → returnObj[deepestPathName]
 	if (!(Array.isArray(returnObj[deepestPathName]))) {
 		returnObj[deepestPathName] = value
@@ -763,11 +753,11 @@ function assign(returnObj, storepath, value, command) {
 		} else if (command == "changeArrayLength") {
 			while (returnObj[deepestPathName].length < value) {
 				if (returnObj[deepestPathName].length != 0) {
-					returnObj[deepestPathName].push({ diameter: returnObj[deepestPathName][returnObj[deepestPathName].length - 1].diameter })
+					returnObj[deepestPathName].push({ diameter: returnObj[deepestPathName].at(-1).diameter })
 				} else {
 					// console.log(unreplacedstorepath.join("ю"))
-					if (document.querySelectorAll(`[data-storepath= '${unreplacedstorepath.join("ю")}'][data-command='changeBarDiameter']`)[0].value * 1 > 0) {
-						returnObj[deepestPathName].push({ diameter: document.querySelectorAll(`[data-storepath= '${unreplacedstorepath.join("ю")}'][data-command='changeBarDiameter']`)[0].value * 1 })
+					if (document.querySelectorAll(`[data-storepath= '${storepath.join("ю")}'][data-command='changeBarDiameter']`)[0].value * 1 > 0) {
+						returnObj[deepestPathName].push({ diameter: document.querySelectorAll(`[data-storepath= '${storepath.join("ю")}'][data-command='changeBarDiameter']`)[0].value * 1 })
 					} else {
 						returnObj[deepestPathName].push({ diameter: 20, x: "", y: "" })
 					}
@@ -778,11 +768,6 @@ function assign(returnObj, storepath, value, command) {
 				returnObj[deepestPathName].pop()
 			}
 
-			// console.log(returnObj[deepestPathName].length)
-
-			// returnObj[deepestPathName][storepath[storepath.length - 1]].forEach(item => {
-			// 	item = value
-			// })
 		}
 	}
 	// console.log(beamObj)
@@ -792,12 +777,12 @@ function assign(returnObj, storepath, value, command) {
 
 function retrive(returnObj, storepath, command) {
 	for (let i = 0; i < storepath.length - 1; i++) {
-		storepath[i] = storepath[i].toString().replace("^", "")
+		storepath[i] = storepath[i].toString()
 		returnObj = returnObj[storepath[i]]
 	}
 
 	// go to deepest level of storepath
-	const deepestPathName = storepath[storepath.length - 1].toString().replace("^", "")
+	const deepestPathName = storepath.at(-1).toString()
 	if (!(Array.isArray(returnObj[deepestPathName]))) {
 		return returnObj[deepestPathName]
 	} else {

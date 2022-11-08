@@ -155,7 +155,7 @@ export default function RC_beam() {
 										<label data-language='quantityюจำนวน'>quantity:</label>
 										<div>
 											<input id="topbarNumber" className="inputBox" type="number"
-												data-storepath='topbarю^firstLayerList' data-command="changeArrayLength" min="0" max="20" />
+												data-storepath='topbarюfirstLayerList' data-command="changeArrayLength" min="0" max="20" />
 											<label></label>
 										</div>
 									</div>
@@ -163,7 +163,7 @@ export default function RC_beam() {
 										<label data-language='diameterюเส้นผ่านศูนย์กลาง'>diameter:</label>
 										<div>
 											<input id="topbarDiameter" className="inputBox" type="number"
-												data-storepath='topbarю^firstLayerList' data-command="changeBarDiameter" min="0" max="40"
+												data-storepath='topbarюfirstLayerList' data-command="changeBarDiameter" min="0" max="40"
 												placeholder="dia." />
 											<label>mm</label>
 										</div>
@@ -174,7 +174,7 @@ export default function RC_beam() {
 										<label data-language='quantityюจำนวน'>quantity:</label>
 										<div>
 											<input id="topbarNumber" className="inputBox" type="number"
-												data-storepath='topbarю^secondLayerList' data-command="changeArrayLength" min="0"
+												data-storepath='topbarюsecondLayerList' data-command="changeArrayLength" min="0"
 												max="20" />
 											<label></label>
 										</div>
@@ -183,7 +183,7 @@ export default function RC_beam() {
 										<label data-language='diameterюเส้นผ่านศูนย์กลาง'>diameter:</label>
 										<div>
 											<input id="topbarDiameter" className="inputBox" type="number"
-												data-storepath='topbarю^secondLayerList' data-command="changeBarDiameter" min="0" max="40"
+												data-storepath='topbarюsecondLayerList' data-command="changeBarDiameter" min="0" max="40"
 												placeholder="dia." />
 											<label>mm</label>
 										</div>
@@ -195,7 +195,7 @@ export default function RC_beam() {
 										<label data-language='quantityюจำนวน'>quantity:</label>
 										<div>
 											<input id="bottombarNumber" className="inputBox" type="number"
-												data-storepath='bottombarю^secondLayerList' data-command="changeArrayLength" min="0"
+												data-storepath='bottombarюsecondLayerList' data-command="changeArrayLength" min="0"
 												max="20" />
 											<label></label>
 										</div>
@@ -204,7 +204,7 @@ export default function RC_beam() {
 										<label data-language='diameterюเส้นผ่านศูนย์กลาง'>diameter:</label>
 										<div>
 											<input id="bottombarDiameter" className="inputBox" type="number"
-												data-storepath='bottombarю^secondLayerList' data-command="changeBarDiameter" min="0"
+												data-storepath='bottombarюsecondLayerList' data-command="changeBarDiameter" min="0"
 												max="40" placeholder="dia." />
 											<label>mm</label>
 										</div>
@@ -215,7 +215,7 @@ export default function RC_beam() {
 										<label data-language='quantityюจำนวน'>quantity:</label>
 										<div>
 											<input id="bottombarNumber" className="inputBox" type="number"
-												data-storepath='bottombarю^firstLayerList' data-command="changeArrayLength" min="0"
+												data-storepath='bottombarюfirstLayerList' data-command="changeArrayLength" min="0"
 												max="20" />
 											<label></label>
 										</div>
@@ -224,7 +224,7 @@ export default function RC_beam() {
 										<label data-language='diameterюเส้นผ่านศูนย์กลาง'>diameter:</label>
 										<div>
 											<input id="bottombarDiameter" className="inputBox" type="number"
-												data-storepath='bottombarю^firstLayerList' data-command="changeBarDiameter" min="0"
+												data-storepath='bottombarюfirstLayerList' data-command="changeBarDiameter" min="0"
 												max="40" placeholder="dia." />
 											<label>mm</label>
 										</div>
