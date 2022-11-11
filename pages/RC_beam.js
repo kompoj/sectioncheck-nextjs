@@ -49,7 +49,7 @@ export default function RC_beam() {
 					<button id="redrawSVG">redrawSVG</button>
 					{/* <!-- <br> --> */}
 
-					<svg className="section-svg" width="25rem" height="25rem" viewBox="0 0 0 0">
+					<svg className="section-svg" width="225px" height="225px" viewBox="0 0 0 0">
 						<rect className="parameter-rect" x="0" y="0" width="30" height="30" stroke="black" fill="transparent"
 							strokeWidth="5" />
 						<rect className="outer-stirrup-rect" x="0" y="0" width="30" height="30" stroke="black" fill="transparent"
@@ -62,8 +62,8 @@ export default function RC_beam() {
 						<g className="bottombar firstLayerList"></g>
 					</svg>
 
-					<div id="myDiv1" style={{ width: "15rem", height: "25rem", display: "inline-block" }}></div>
-					<div id="myDiv2" style={{ width: "15rem", height: "25rem", display: "inline-block" }}></div>
+					<div id="myDiv1" style={{ width: "135px", height: "225px", display: "inline-block" }}></div>
+					<div id="myDiv2" style={{ width: "135px", height: "225px", display: "inline-block" }}></div>
 
 					<label className="kN-kg-switch-container">
 						<div>kN</div>
