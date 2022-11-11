@@ -46,6 +46,19 @@ html {
 	font-weight: 400;
 }
 
+
+@media (max-width: 768px) {
+	html {
+		font-size: 56.25%
+	}
+}
+
+@media (max-width: 576px) {
+	html {
+		font-size: 50%
+	}
+}
+
 body {
 	min-height: 100vh;
 	font-size: 1.5rem;
