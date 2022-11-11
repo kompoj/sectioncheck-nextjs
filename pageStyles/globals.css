@@ -44,12 +44,11 @@ html {
 	font-size: 62.5%;
 	font-family: "open sans", "sarabun", sans-serif;
 	font-weight: 400;
-	--font-size: 1.5rem;
 }
 
 body {
 	min-height: 100vh;
-	font-size: var(--font-size);
+	font-size: 1.5rem;
 	background: url("/img/bgnoise.png");
 }
 
@@ -73,7 +72,7 @@ body {
 input {
 	font-family: "open sans", "sarabun", sans-serif;
 	font-weight: 400;
-	font-size: var(--font-size);
+	font-size: 1.5rem;
 }
 
 .inputBox {
@@ -153,7 +152,7 @@ input {
 }
 
 .accordion-header {
-	font-size: var(--font-size);
+	font-size: 1.5rem;
 	cursor: pointer;
 	display: inline-block;
 	user-select: none;
