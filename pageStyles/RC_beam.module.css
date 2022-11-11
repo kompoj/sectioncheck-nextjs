@@ -27,7 +27,3 @@
 	row-gap: 1rem;
 	align-items: start;
 }
-
-.section_svg circle:hover {
-	fill: #5477a0;
-}

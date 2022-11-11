@@ -190,4 +190,8 @@ input {
 	margin-top: 1rem;
 }
 
+.section-svg circle:hover {
+	fill: #5477a0;
+}
+
 /*# sourceMappingURL=style.css.map */
