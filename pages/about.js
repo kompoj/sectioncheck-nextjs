@@ -51,7 +51,6 @@ export default function about() {
 							<li>kjkj</li>
 						</ol>
 						<div
-							contentEditable="false"
 							spellCheck="false"
 							className="mathjax-block md-end-block md-math-block md-rawblock"
 							id="mathjax-n24"
@@ -63,7 +62,6 @@ export default function about() {
 						>
 							<div
 								className="md-rawblock-container md-math-container"
-								contentEditable="false"
 								tabIndex={-1}
 							>
 								<mjx-container
@@ -435,28 +433,6 @@ export default function about() {
 							malesuada nisl. Donec malesuada turpis commodo, dapibus purus nec, hendrerit
 							ex. Ut suscipit auctor ex non molestie. Nullam at lorem laoreet, egestas
 							justo a, ultricies mauris.
-						</p>
-						<p>
-							Lorem ipsum dolor sit <code>amet, consectetur adipiscing elit.</code>{" "}
-							Suspendisse eu gravida sapien. Donec semper volutpat interdum. Ut placerat
-							sagittis rhoncus. Aliquam fringilla, neque eu dictum ultrices, lorem orci
-							maximus lorem, eget aliquam augue erat id metus. Ut non libero sed nulla
-							egestas volutpat. Vestibulum consectetur vitae eros et egestas. Nulla
-							malesuada efficitur ante at fringilla. Sed odio elit, mattis eu justo ac,
-							mattis malesuada nisl. Donec malesuada turpis commodo, dapibus purus nec,
-							hendrerit ex. Ut suscipit auctor ex non molestie. Nullam at lorem laoreet,
-							egestas justo a, ultricies mauris.
-						</p>
-						<p>
-							Lorem ipsum dolor sit <code>amet, consectetur adipiscing elit.</code>{" "}
-							Suspendisse eu gravida sapien. Donec semper volutpat interdum. Ut placerat
-							sagittis rhoncus. Aliquam fringilla, neque eu dictum ultrices, lorem orci
-							maximus lorem, eget aliquam augue erat id metus. Ut non libero sed nulla
-							egestas volutpat. Vestibulum consectetur vitae eros et egestas. Nulla
-							malesuada efficitur ante at fringilla. Sed odio elit, mattis eu justo ac,
-							mattis malesuada nisl. Donec malesuada turpis commodo, dapibus purus nec,
-							hendrerit ex. Ut suscipit auctor ex non molestie. Nullam at lorem laoreet,
-							egestas justo a, ultricies mauris.
 						</p>
 						<p>
 							Lorem ipsum dolor sit <code>amet, consectetur adipiscing elit.</code>{" "}

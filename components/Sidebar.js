@@ -4,19 +4,18 @@ import Link from 'next/link'
 import NavStyles from '/styles/components/Nav.module.css'
 
 const Sidebar = () => {
-	console.log(styles.closebtn)
-	console.log(NavStyles.hamburger)
 	// console.log(document)
 
 	setTimeout(() => {
-		document.getElementsByClassName(NavStyles.hamburger)[0].addEventListener("click", () => {
+		console.log("sidebar script loaded 💥", typeof document)
+		typeof document !== 'undefined' && document.getElementsByClassName(NavStyles.hamburger)[0].addEventListener("click", () => {
 			document.getElementById(styles.sidebar_inject).classList.add(styles.open)
 		})
 
-		document.getElementsByClassName(styles.closebtn)[0].addEventListener("click", () => {
+		typeof document !== 'undefined' && document.getElementsByClassName(styles.closebtn)[0].addEventListener("click", () => {
 			document.getElementById(styles.sidebar_inject).classList.remove(styles.open)
 		})
-	}, 5000);
+	}, 100);
 
 
 
