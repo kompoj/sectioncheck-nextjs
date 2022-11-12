@@ -1,7 +1,7 @@
-﻿import styles from '/componentStyles/Nav.module.css'
+﻿import styles from '/styles/components/Nav.module.css'
 import Link from 'next/link'
 
-import SidebarStyles from '/componentStyles/Sidebar.module.css'
+import SidebarStyles from '/styles/components/Sidebar.module.css'
 
 const Nav = () => {
 

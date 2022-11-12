@@ -1,7 +1,7 @@
-﻿import styles from '/componentStyles/Sidebar.module.css'
+﻿import styles from '/styles/components/Sidebar.module.css'
 import Link from 'next/link'
 
-import NavStyles from '../componentStyles/Nav.module.css'
+import NavStyles from '/styles/components/Nav.module.css'
 
 const Sidebar = () => {
 	console.log(styles.closebtn)
@@ -16,7 +16,7 @@ const Sidebar = () => {
 		document.getElementsByClassName(styles.closebtn)[0].addEventListener("click", () => {
 			document.getElementById(styles.sidebar_inject).classList.remove(styles.open)
 		})
-	}, 1000);
+	}, 5000);
 
 
 

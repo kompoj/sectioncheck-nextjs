@@ -6,7 +6,7 @@ import Nav from "/components/Nav.js"
 import Sidebar from '../components/Sidebar.js'
 import Footer from "../components/Footer.js"
 
-import pagestyles from '../pageStyles/RC_beam.module.css'
+import pagestyles from '/styles/pages/RC_beam.module.css'
 
 
 import EachInput from '../components/EachInput.js'

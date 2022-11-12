@@ -1,7 +1,7 @@
-import '../pageStyles/globals.css'
-// import '../pageStyles/base.css'
-import '../pageStyles/my-theme typora.css'
-import '../pageStyles/prism.css'
+import '/styles/globals/globals.css'
+// import '../styles/globals/base.css'
+import '/styles/globals/my-theme typora.css'
+import '/styles/globals/prism.css'
 
 import Script from 'next/script'
 
