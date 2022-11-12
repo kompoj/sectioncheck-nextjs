@@ -1,5 +1,9 @@
 import { assign, retrive } from './utility/assign-retrive.js'
 
+// import styles from '/styles/components/Nav.module.css'
+// GET http://localhost:3000/styles/components/Nav.module.css net::ERR_ABORTED 404 (Not Found)
+
+
 const shallow_foundation = {
 	initial: {
 		number1: 40,
