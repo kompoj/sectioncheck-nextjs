@@ -32,6 +32,7 @@ const Sidebar = () => {
 			<Link href="/RC_beam">RC beam (Link tag)</Link>
 			<Link href="/steel_wide_flange">steel wide flange</Link>
 			<a href="/shallow_foundation">shallow foundation (a tag)</a>
+			<a href="/slab_load_to_beam">slab load to beam (a tag)</a>
 
 		</div>
 	)
