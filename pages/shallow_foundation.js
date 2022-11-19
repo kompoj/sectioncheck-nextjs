@@ -45,14 +45,12 @@ export default function shallow_foundation() {
 					</label>
 
 
-					<EachInput labelName="fc" data_storepath="iputюfcю0" min="0" max="20" step="0.1" unit="MPA" data_unit="0юMPAю0юksc" data_unit_storepath="iputюfcю1" />
-					<EachInput labelName="b0" data_storepath="iputюb0ю0" min="0" max="20" step="0.1" unit="mm" data_unit="0юmmю0юcm" data_unit_storepath="iputюb0ю1" />
+					<EachInput labelName="fc" data_storepath="iputюfcю0" min="0" max="" step="0.1" unit="MPa" data_unit="-1юMPaю0юksc" data_unit_storepath="iputюfcю1" />
+					<EachInput labelName="b0" data_storepath="iputюb0ю0" min="0" max="" step="0.1" unit="mm" data_unit="0юmmю0юcm" data_unit_storepath="iputюb0ю1" />
 					<EachInput labelName="d" data_storepath="iputюdю0" min="0" max="" step="0.1" unit="mm" data_unit="0юmmю0юcm" data_unit_storepath="iputюdю1" />
 
-					{/* <EachOutput labelName="m" data_storepath="oputюm" data_round="2" unit="" />
-					<EachOutput labelName="onewayortwoway" data_storepath="oputюonewayortwoway" data_round="" unit="" />
-					<EachOutput labelName="VL transfer to long beam" data_storepath="oputюVLю0" data_round="2" unit="kN/m" data_unit="2юkN/mю0юkg/m" data_unit_storepath="oputюVLю1" />
-					<EachOutput labelName="VS transfer to short beam" data_storepath="oputюVSю0" data_round="2" unit="kN/m" data_unit="2юkN/mю0юkg/m" data_unit_storepath="oputюVSю1" /> */}
+
+					<EachOutput labelName="punchingShearCap" data_storepath="oputюpunchingShearCapю0" data_round="2" unit="kN" data_unit="4юkNю5юkg" data_unit_storepath="oputюpunchingShearCapю1" />
 				</div>
 			</div>
 			<Footer />

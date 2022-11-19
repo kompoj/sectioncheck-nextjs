@@ -6,7 +6,7 @@ import { assign, retrive } from './utility/assign-retrive.js'
 
 const SLF = {
 	iput: {
-		fc: [28, "MPA"],
+		fc: [28, "MPa"],
 		b0: [1000, "mm"],
 		d: [300, "mm"]
 	},
@@ -42,16 +42,22 @@ function convertUnit(newUnit, oldValue, oldUnit) {
 		return oldValue
 	}
 
-	else if (newUnit == "kg/m2" && oldUnit == "kN/m2") {
+	else if (newUnit == "ksc" && oldUnit == "MPa") {
+		return oldValue / 9.81 * 100
+	} else if (newUnit == "MPa" && oldUnit == "ksc") {
+		return oldValue * 9.81 / 100
+	}
+
+	else if (newUnit == "kg" && oldUnit == "kN") {
 		return oldValue * 1000 / 9.81
-	} else if (newUnit == "kN/m2" && oldUnit == "kg/m2") {
+	} else if (newUnit == "kN" && oldUnit == "kg") {
 		return oldValue * 9.81 / 1000
 	}
 
-	else if (newUnit == "kg/m" && oldUnit == "kN/m") {
-		return oldValue * 1000 / 9.81
-	} else if (newUnit == "kN/m" && oldUnit == "kg/m") {
-		return oldValue * 9.81 / 1000
+	else if (newUnit == "cm" && oldUnit == "mm") {
+		return oldValue / 10
+	} else if (newUnit == "mm" && oldUnit == "cm") {
+		return oldValue * 10
 	}
 }
 
@@ -178,16 +184,17 @@ function retriveAllDataFromDatabaseToInputEl() {
 
 // H| function calculateAndUpdateResult
 function calculateAndUpdateResult() {
-	SLF.oput.m = SLF.iput.S / SLF.iput.L
-	if (SLF.iput.L / SLF.iput.S > 2) {
-		SLF.oput.onewayortwoway = "one way"
-		SLF.oput.VL[0] = SLF.iput.wu[0] * SLF.iput.S / 2
-		SLF.oput.VS[0] = 0
-	} else {
-		SLF.oput.onewayortwoway = "two way"
-		SLF.oput.VL[0] = SLF.iput.wu[0] * SLF.iput.S / 3 * (3 - SLF.oput.m ** 2) / 2
-		SLF.oput.VS[0] = SLF.iput.wu[0] * SLF.iput.S / 3
-	}
+	// convertUnit(newUnit, oldValue, oldUnit)
+
+	let fc_MPa = convertUnit("MPa", SLF.iput.fc[0], SLF.iput.fc[1])
+	let b0_mm = convertUnit("mm", SLF.iput.b0[0], SLF.iput.b0[1])
+	let d_mm = convertUnit("mm", SLF.iput.d[0], SLF.iput.d[1])
+
+	// 0.33 for N unit, 1.06 for kN unit, coeff diff = sqrt(9.81)
+	let punchingshear_kN = 0.332 * 0.85 * Math.sqrt(fc_MPa) * b0_mm * d_mm / 1000
+	SLF.oput.punchingShearCap[0] = convertUnit(SLF.oput.punchingShearCap[1], punchingshear_kN, "kN")
+
+
 
 
 
