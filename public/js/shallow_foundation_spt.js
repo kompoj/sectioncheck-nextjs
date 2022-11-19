@@ -4,12 +4,14 @@ import { assign, retrive } from './utility/assign-retrive.js'
 // GET http://localhost:3000/styles/components/Nav.module.css net::ERR_ABORTED 404 (Not Found)
 
 
-const shallow_foundation = {
-	initial: {
-		number1: 40,
-		number2: 1.75,
+const SLF = {
+	iput: {
+		fc: [28, "MPA"],
+		b0: [1000, "mm"],
+		d: [300, "mm"]
 	},
-	result: {
+	oput: {
+		punchingShearCap: ["", "kN"]
 	}
 
 }
@@ -40,15 +42,15 @@ function convertUnit(newUnit, oldValue, oldUnit) {
 		return oldValue
 	}
 
-	else if (newUnit == "ksc" && oldUnit == "MPa") {
-		return oldValue / 9.81 * 100
-	} else if (newUnit == "MPa" && oldUnit == "ksc") {
-		return oldValue * 9.81 / 100
+	else if (newUnit == "kg/m2" && oldUnit == "kN/m2") {
+		return oldValue * 1000 / 9.81
+	} else if (newUnit == "kN/m2" && oldUnit == "kg/m2") {
+		return oldValue * 9.81 / 1000
 	}
 
-	else if (newUnit == "kgm" && oldUnit == "kNm") {
+	else if (newUnit == "kg/m" && oldUnit == "kN/m") {
 		return oldValue * 1000 / 9.81
-	} else if (newUnit == "kNm" && oldUnit == "kgm") {
+	} else if (newUnit == "kN/m" && oldUnit == "kg/m") {
 		return oldValue * 9.81 / 1000
 	}
 }
@@ -74,9 +76,9 @@ document.querySelectorAll(".inputBox").forEach(El => {
 	El.addEventListener("input", function (e) {
 		const storepath = El.getAttribute("data-storepath").split('ю')
 		const command = El.getAttribute("data-command")
-		assign(shallow_foundation, storepath, El.value * 1, command)
+		assign(SLF, storepath, El.value * 1, command)
 
-		// console.log(shallow_foundation)
+		// console.log(SLF)
 		retriveAllDataFromDatabaseToInputEl()
 		calculateAndUpdateResult()
 		// 	redrawSVG()
@@ -84,15 +86,15 @@ document.querySelectorAll(".inputBox").forEach(El => {
 
 })
 
-/*
+
 
 // H| querySelector('.kN-kg-switch')
 const kN_kg_switch = document.querySelector('.kN-kg-switch')
 kN_kg_switch.addEventListener('click', function () {
-	if (kN_kg_switch.getAttribute("data-unitToggle") == "kN") {
-		kN_kg_switch.setAttribute("data-unitToggle", "kg")
-	} else if (kN_kg_switch.getAttribute("data-unitToggle") == "kg") {
-		kN_kg_switch.setAttribute("data-unitToggle", "kN")
+	if (kN_kg_switch.getAttribute("data-unit-toggle") == "kN") {
+		kN_kg_switch.setAttribute("data-unit-toggle", "kg")
+	} else if (kN_kg_switch.getAttribute("data-unit-toggle") == "kg") {
+		kN_kg_switch.setAttribute("data-unit-toggle", "kN")
 	}
 
 
@@ -101,39 +103,40 @@ kN_kg_switch.addEventListener('click', function () {
 
 		//get current(old) unit
 		let unitStorepath = El.getAttribute("data-storepath").split("ю")
-		let oldUnit = retrive(shallow_foundation, unitStorepath)
+		let oldUnit = retrive(SLF, unitStorepath)
 
 		//get current(old) value
 		let ValueStorepath = [...unitStorepath]
 		ValueStorepath[ValueStorepath.length - 1] = 0 //unit storepath is stored at materialstrengthюconcreteю1, meanwhile value is stored at materialstrengthюconcreteю0
-		let oldValue = retrive(shallow_foundation, ValueStorepath)
+		let oldValue = retrive(SLF, ValueStorepath)
 
 
 		let unitArray = El.getAttribute("data-unit").split("ю")
 		let newUnit
+		let newConvertedValue
 
-		if (kN_kg_switch.getAttribute("data-unitToggle") == "kN") {
+		if (kN_kg_switch.getAttribute("data-unit-toggle") == "kN") {
 			//get and set target(new) unit
 			newUnit = unitArray[1]
-			assign(shallow_foundation, unitStorepath, newUnit)
+			assign(SLF, unitStorepath, newUnit)
 
 			if (El.previousElementSibling.classList.contains("inputBox")) {
-				El.previousElementSibling.setAttribute("step", 10 ** -unitArray[0])
-				newConvertedValue = Math.round(convertUnit(newUnit, oldValue, oldUnit) * 10 ** unitArray[0]) / (10 ** unitArray[0])
-				assign(shallow_foundation, ValueStorepath, newConvertedValue)
+				El.previousElementSibling.setAttribute("step", 10 ** unitArray[0])
+				newConvertedValue = Math.round(convertUnit(newUnit, oldValue, oldUnit) * 10 ** -unitArray[0]) / (10 ** -unitArray[0])
+				assign(SLF, ValueStorepath, newConvertedValue)
 
 			} else if (El.previousElementSibling.classList.contains("outputBox")) {
 				El.previousElementSibling.setAttribute("data-round", unitArray[0])
 			}
 
-		} else if (kN_kg_switch.getAttribute("data-unitToggle") == "kg") {
+		} else if (kN_kg_switch.getAttribute("data-unit-toggle") == "kg") {
 			newUnit = unitArray[3]
 			// console.log(newUnit, storepath)
-			assign(shallow_foundation, unitStorepath, newUnit)
+			assign(SLF, unitStorepath, newUnit)
 			if (El.previousElementSibling.classList.contains("inputBox")) {
-				El.previousElementSibling.setAttribute("step", 10 ** -unitArray[2])
-				newConvertedValue = Math.round(convertUnit(newUnit, oldValue, oldUnit) * 10 ** unitArray[2]) / (10 ** unitArray[2])
-				assign(shallow_foundation, ValueStorepath, newConvertedValue)
+				El.previousElementSibling.setAttribute("step", 10 ** unitArray[2])
+				newConvertedValue = Math.round(convertUnit(newUnit, oldValue, oldUnit) * 10 ** -unitArray[2]) / (10 ** -unitArray[2])
+				assign(SLF, ValueStorepath, newConvertedValue)
 
 			} else if (El.previousElementSibling.classList.contains("outputBox")) {
 				El.previousElementSibling.setAttribute("data-round", unitArray[2])
@@ -147,7 +150,7 @@ kN_kg_switch.addEventListener('click', function () {
 	retriveAllDataFromDatabaseToInputEl()
 	calculateAndUpdateResult()
 })
-*/
+
 
 // H| function retriveAllDataFromDatabaseToInputEl
 function retriveAllDataFromDatabaseToInputEl() {
@@ -155,7 +158,7 @@ function retriveAllDataFromDatabaseToInputEl() {
 		const storepath = El.getAttribute('data-storepath').split('ю')
 		const command = El.getAttribute('data-command')
 
-		let retrivedValue = retrive(shallow_foundation, storepath, command)
+		let retrivedValue = retrive(SLF, storepath, command)
 		if (retrivedValue != "don't have any value to be retrived" && retrivedValue != 0) {
 
 			if (typeof retrivedValue == "string" && retrivedValue.includes("bars")) {
@@ -166,33 +169,44 @@ function retriveAllDataFromDatabaseToInputEl() {
 		}
 	})
 
-	// document.querySelectorAll('[data-unit]').forEach(El => {
-	// 	const storepath = El.getAttribute('data-storepath').split('ю')
-	// 	// const command = El.getAttribute('data-command')
-	// 	El.innerHTML = retrive(shallow_foundation, storepath)
-	// })
+	document.querySelectorAll('[data-unit]').forEach(El => {
+		const storepath = El.getAttribute('data-storepath').split('ю')
+		// const command = El.getAttribute('data-command')
+		El.innerHTML = retrive(SLF, storepath)
+	})
 }
 
 // H| function calculateAndUpdateResult
 function calculateAndUpdateResult() {
-	shallow_foundation.result.multiplication = shallow_foundation.initial.number1 * 1 * shallow_foundation.initial.number2 * 1;
-	shallow_foundation.result.addition = shallow_foundation.initial.number1 * 1 + shallow_foundation.initial.number2 * 1;
-	shallow_foundation.result.subtraction = shallow_foundation.initial.number1 * 1 - shallow_foundation.initial.number2 * 1;
-	shallow_foundation.result.division = shallow_foundation.initial.number1 * 1 / shallow_foundation.initial.number2 * 1;
+	SLF.oput.m = SLF.iput.S / SLF.iput.L
+	if (SLF.iput.L / SLF.iput.S > 2) {
+		SLF.oput.onewayortwoway = "one way"
+		SLF.oput.VL[0] = SLF.iput.wu[0] * SLF.iput.S / 2
+		SLF.oput.VS[0] = 0
+	} else {
+		SLF.oput.onewayortwoway = "two way"
+		SLF.oput.VL[0] = SLF.iput.wu[0] * SLF.iput.S / 3 * (3 - SLF.oput.m ** 2) / 2
+		SLF.oput.VS[0] = SLF.iput.wu[0] * SLF.iput.S / 3
+	}
+
 
 
 	// console.log("finished calculating result")
 
 	ResultPrintOutToOutputEl()
-	console.log(shallow_foundation)
+	console.log(SLF)
 }
 
 
 
 function ResultPrintOutToOutputEl() {
 	document.querySelectorAll(".outputBox").forEach(El => {
-		const round = El.getAttribute("data-round") * 1
-		El.innerHTML = Math.round(retrive(shallow_foundation, El.getAttribute("data-storepath").split('ю')) * 10 ** round) / 10 ** round
+		if (El.getAttribute("data-round") != "") {
+			const round = El.getAttribute("data-round") * 1
+			El.innerHTML = Math.round(retrive(SLF, El.getAttribute("data-storepath").split('ю')) * 10 ** round) / 10 ** round
+		} else {
+			El.innerHTML = retrive(SLF, El.getAttribute("data-storepath").split('ю'))
+		}
 	})
 }
 
@@ -209,27 +223,27 @@ function redrawSVG() {
 function redrawSVGRect() {
 	const svg = document.querySelector(".section-svg")
 	const strokeWidth = 3
-	// const strokeWidth = Math.max(shallow_foundation.dimension.height, shallow_foundation.dimension.width) / 100
-	svg.setAttribute("viewBox", `${-strokeWidth / 2} ${-20} ${shallow_foundation.dimension.width + strokeWidth} ${shallow_foundation.dimension.height + 40}`);
+	// const strokeWidth = Math.max(SLF.dimension.height, SLF.dimension.width) / 100
+	svg.setAttribute("viewBox", `${-strokeWidth / 2} ${-20} ${SLF.dimension.width + strokeWidth} ${SLF.dimension.height + 40}`);
 
 	const parameter_rect = svg.querySelector(".parameter-rect")
-	parameter_rect.setAttribute("width", shallow_foundation.dimension.width)
-	parameter_rect.setAttribute("height", shallow_foundation.dimension.height)
+	parameter_rect.setAttribute("width", SLF.dimension.width)
+	parameter_rect.setAttribute("height", SLF.dimension.height)
 	parameter_rect.setAttribute("stroke-width", strokeWidth)
 	parameter_rect.setAttribute("rx", 5)
 
 	const outer_stirrup_rect = svg.querySelector(".outer-stirrup-rect")
-	outer_stirrup_rect.setAttribute("width", shallow_foundation.dimension.width - shallow_foundation.dimension.covering * 2)
-	outer_stirrup_rect.setAttribute("height", shallow_foundation.dimension.height - shallow_foundation.dimension.covering * 2)
-	outer_stirrup_rect.setAttribute("x", shallow_foundation.dimension.covering)
-	outer_stirrup_rect.setAttribute("y", shallow_foundation.dimension.covering)
+	outer_stirrup_rect.setAttribute("width", SLF.dimension.width - SLF.dimension.covering * 2)
+	outer_stirrup_rect.setAttribute("height", SLF.dimension.height - SLF.dimension.covering * 2)
+	outer_stirrup_rect.setAttribute("x", SLF.dimension.covering)
+	outer_stirrup_rect.setAttribute("y", SLF.dimension.covering)
 	outer_stirrup_rect.setAttribute("rx", 17)
 
 	const inner_stirrup_rect = svg.querySelector(".inner-stirrup-rect")
-	inner_stirrup_rect.setAttribute("width", shallow_foundation.dimension.width - shallow_foundation.dimension.covering * 2 - shallow_foundation.stirrup * 2)
-	inner_stirrup_rect.setAttribute("height", shallow_foundation.dimension.height - shallow_foundation.dimension.covering * 2 - shallow_foundation.stirrup * 2)
-	inner_stirrup_rect.setAttribute("x", shallow_foundation.dimension.covering + shallow_foundation.stirrup)
-	inner_stirrup_rect.setAttribute("y", shallow_foundation.dimension.covering + shallow_foundation.stirrup)
+	inner_stirrup_rect.setAttribute("width", SLF.dimension.width - SLF.dimension.covering * 2 - SLF.stirrup * 2)
+	inner_stirrup_rect.setAttribute("height", SLF.dimension.height - SLF.dimension.covering * 2 - SLF.stirrup * 2)
+	inner_stirrup_rect.setAttribute("x", SLF.dimension.covering + SLF.stirrup)
+	inner_stirrup_rect.setAttribute("y", SLF.dimension.covering + SLF.stirrup)
 	inner_stirrup_rect.setAttribute("rx", 8)
 }
 function redrawSVGbar() {
@@ -242,10 +256,10 @@ function redrawSVGbar() {
 		for (let j = 0; j < FS.length; j++) {
 			const svgBarLayerGroup = document.querySelector(`.section-svg g.${TB[i]}.${FS[j]}`)
 
-			// console.log(shallow_foundation[TB[i]][FS[j]])
+			// console.log(SLF[TB[i]][FS[j]])
 			let string = ""
-			for (let index = 0; index < shallow_foundation[TB[i]][FS[j]].length; index++) {
-				string += `<circle class='' cx='${shallow_foundation[TB[i]][FS[j]][index].x * 1}' cy='${shallow_foundation[TB[i]][FS[j]][index].y * 1}' r='${shallow_foundation[TB[i]][FS[j]][index].diameter * 1 / 2}'
+			for (let index = 0; index < SLF[TB[i]][FS[j]].length; index++) {
+				string += `<circle class='' cx='${SLF[TB[i]][FS[j]][index].x * 1}' cy='${SLF[TB[i]][FS[j]][index].y * 1}' r='${SLF[TB[i]][FS[j]][index].diameter * 1 / 2}'
 						data-storepath='${TB[i]}ю^${FS[j]}ю${index}юdiameter' />`
 			}
 			svgBarLayerGroup.innerHTML = string
@@ -256,9 +270,9 @@ function redrawSVGbar() {
 				circleEl.addEventListener("click", function (e) {
 					const storepath = circleEl.getAttribute("data-storepath").split("ю")
 
-					let newDiameter = prompt("Please enter new diameter", retrive(shallow_foundation, storepath));
+					let newDiameter = prompt("Please enter new diameter", retrive(SLF, storepath));
 					if (newDiameter != null) {
-						assign(shallow_foundation, storepath, newDiameter * 1)
+						assign(SLF, storepath, newDiameter * 1)
 						retriveAllDataFromDatabaseToInputEl()
 						calculateAndUpdateResult()
 						redrawSVG()
@@ -294,10 +308,10 @@ function redrawPositiveStrainDiagram() {
 		}
 	};
 
-	if (shallow_foundation.positive.εt != NaN && shallow_foundation.positive.c != NaN && shallow_foundation.positive.dt != NaN && shallow_foundation.positive.dt != 0) {
-		trace1.x = [0, 0.003, 0, -shallow_foundation.positive.εt, 0, 0]
-		trace1.y = [0, 0, shallow_foundation.positive.c, shallow_foundation.positive.dt, shallow_foundation.positive.dt, 0]
-		trace1.text = ["", "", "", `ε=${Math.round(shallow_foundation.positive.εt * 10000) / 10000}`, "", ""]
+	if (SLF.positive.εt != NaN && SLF.positive.c != NaN && SLF.positive.dt != NaN && SLF.positive.dt != 0) {
+		trace1.x = [0, 0.003, 0, -SLF.positive.εt, 0, 0]
+		trace1.y = [0, 0, SLF.positive.c, SLF.positive.dt, SLF.positive.dt, 0]
+		trace1.text = ["", "", "", `ε=${Math.round(SLF.positive.εt * 10000) / 10000}`, "", ""]
 	} else {
 		trace1.x = []
 		trace1.y = []
@@ -318,10 +332,10 @@ function redrawPositiveStrainDiagram() {
 
 	const trace3 = {
 		x: [0],
-		y: [shallow_foundation.positive.c],
+		y: [SLF.positive.c],
 		type: 'scatter',
 		mode: 'text',
-		text: [`c=${Math.round(shallow_foundation.positive.c * 100) / 100}mm `],
+		text: [`c=${Math.round(SLF.positive.c * 100) / 100}mm `],
 		textposition: 'left',
 		textfont: {
 			size: 10,
@@ -344,7 +358,7 @@ function redrawPositiveStrainDiagram() {
 			size: 8,
 		},
 	};
-	trace4.y = JSON.parse(`[${shallow_foundation.dimension.height},${shallow_foundation.dimension.height}]`)
+	trace4.y = JSON.parse(`[${SLF.dimension.height},${SLF.dimension.height}]`)
 
 	const trace5 = {
 		x: [-0.005, -0.012],
@@ -361,7 +375,7 @@ function redrawPositiveStrainDiagram() {
 			size: 8,
 		},
 	};
-	trace5.y = JSON.parse(`[${shallow_foundation.dimension.height},${shallow_foundation.dimension.height}]`)
+	trace5.y = JSON.parse(`[${SLF.dimension.height},${SLF.dimension.height}]`)
 
 
 	const trace6 = {
@@ -379,9 +393,9 @@ function redrawPositiveStrainDiagram() {
 			size: 8,
 		},
 	};
-	trace6.x = [0, -shallow_foundation.materialStrength.εy]
-	trace6.y = JSON.parse(`[${shallow_foundation.dimension.height},${shallow_foundation.dimension.height}]`)
-	trace6.text = ["", `εy=${shallow_foundation.materialStrength.εy}`]
+	trace6.x = [0, -SLF.materialStrength.εy]
+	trace6.y = JSON.parse(`[${SLF.dimension.height},${SLF.dimension.height}]`)
+	trace6.text = ["", `εy=${SLF.materialStrength.εy}`]
 
 	const data = [trace1, trace2, trace3, trace4, trace5, trace6];
 	// const data = [trace1];
@@ -410,7 +424,7 @@ function redrawPositiveStrainDiagram() {
 		paper_bgcolor: 'rgba(0,0,0,0)',
 		plot_bgcolor: 'rgba(0,0,0,0)'
 	};
-	layout.yaxis.range = [shallow_foundation.dimension.height + 20, -20]
+	layout.yaxis.range = [SLF.dimension.height + 20, -20]
 
 
 	Plotly.newPlot('myDiv1', data, layout, {

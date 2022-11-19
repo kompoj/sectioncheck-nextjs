@@ -4,13 +4,15 @@ import { assign, retrive } from './utility/assign-retrive.js'
 // GET http://localhost:3000/styles/components/Nav.module.css net::ERR_ABORTED 404 (Not Found)
 
 
-const slab_load_to_beam = {
-	initial: {
-		S: 3,
+const SL2B = {
+	iput: {
+		S: 3.2,
 		L: 5,
-		wu: 100
+		wu: [2.5, "kN/m2"]
 	},
-	result: {
+	oput: {
+		VL: ["", "kN/m"],
+		VS: ["", "kN/m"]
 	}
 
 }
@@ -41,15 +43,15 @@ function convertUnit(newUnit, oldValue, oldUnit) {
 		return oldValue
 	}
 
-	else if (newUnit == "ksc" && oldUnit == "MPa") {
-		return oldValue / 9.81 * 100
-	} else if (newUnit == "MPa" && oldUnit == "ksc") {
-		return oldValue * 9.81 / 100
+	else if (newUnit == "kg/m2" && oldUnit == "kN/m2") {
+		return oldValue * 1000 / 9.81
+	} else if (newUnit == "kN/m2" && oldUnit == "kg/m2") {
+		return oldValue * 9.81 / 1000
 	}
 
-	else if (newUnit == "kgm" && oldUnit == "kNm") {
+	else if (newUnit == "kg/m" && oldUnit == "kN/m") {
 		return oldValue * 1000 / 9.81
-	} else if (newUnit == "kNm" && oldUnit == "kgm") {
+	} else if (newUnit == "kN/m" && oldUnit == "kg/m") {
 		return oldValue * 9.81 / 1000
 	}
 }
@@ -75,9 +77,9 @@ document.querySelectorAll(".inputBox").forEach(El => {
 	El.addEventListener("input", function (e) {
 		const storepath = El.getAttribute("data-storepath").split('ю')
 		const command = El.getAttribute("data-command")
-		assign(slab_load_to_beam, storepath, El.value * 1, command)
+		assign(SL2B, storepath, El.value * 1, command)
 
-		// console.log(slab_load_to_beam)
+		// console.log(SL2B)
 		retriveAllDataFromDatabaseToInputEl()
 		calculateAndUpdateResult()
 		// 	redrawSVG()
@@ -85,15 +87,15 @@ document.querySelectorAll(".inputBox").forEach(El => {
 
 })
 
-/*
+
 
 // H| querySelector('.kN-kg-switch')
 const kN_kg_switch = document.querySelector('.kN-kg-switch')
 kN_kg_switch.addEventListener('click', function () {
-	if (kN_kg_switch.getAttribute("data-unitToggle") == "kN") {
-		kN_kg_switch.setAttribute("data-unitToggle", "kg")
-	} else if (kN_kg_switch.getAttribute("data-unitToggle") == "kg") {
-		kN_kg_switch.setAttribute("data-unitToggle", "kN")
+	if (kN_kg_switch.getAttribute("data-unit-toggle") == "kN") {
+		kN_kg_switch.setAttribute("data-unit-toggle", "kg")
+	} else if (kN_kg_switch.getAttribute("data-unit-toggle") == "kg") {
+		kN_kg_switch.setAttribute("data-unit-toggle", "kN")
 	}
 
 
@@ -102,39 +104,40 @@ kN_kg_switch.addEventListener('click', function () {
 
 		//get current(old) unit
 		let unitStorepath = El.getAttribute("data-storepath").split("ю")
-		let oldUnit = retrive(slab_load_to_beam, unitStorepath)
+		let oldUnit = retrive(SL2B, unitStorepath)
 
 		//get current(old) value
 		let ValueStorepath = [...unitStorepath]
 		ValueStorepath[ValueStorepath.length - 1] = 0 //unit storepath is stored at materialstrengthюconcreteю1, meanwhile value is stored at materialstrengthюconcreteю0
-		let oldValue = retrive(slab_load_to_beam, ValueStorepath)
+		let oldValue = retrive(SL2B, ValueStorepath)
 
 
 		let unitArray = El.getAttribute("data-unit").split("ю")
 		let newUnit
+		let newConvertedValue
 
-		if (kN_kg_switch.getAttribute("data-unitToggle") == "kN") {
+		if (kN_kg_switch.getAttribute("data-unit-toggle") == "kN") {
 			//get and set target(new) unit
 			newUnit = unitArray[1]
-			assign(slab_load_to_beam, unitStorepath, newUnit)
+			assign(SL2B, unitStorepath, newUnit)
 
 			if (El.previousElementSibling.classList.contains("inputBox")) {
-				El.previousElementSibling.setAttribute("step", 10 ** -unitArray[0])
-				newConvertedValue = Math.round(convertUnit(newUnit, oldValue, oldUnit) * 10 ** unitArray[0]) / (10 ** unitArray[0])
-				assign(slab_load_to_beam, ValueStorepath, newConvertedValue)
+				El.previousElementSibling.setAttribute("step", 10 ** unitArray[0])
+				newConvertedValue = Math.round(convertUnit(newUnit, oldValue, oldUnit) * 10 ** -unitArray[0]) / (10 ** -unitArray[0])
+				assign(SL2B, ValueStorepath, newConvertedValue)
 
 			} else if (El.previousElementSibling.classList.contains("outputBox")) {
 				El.previousElementSibling.setAttribute("data-round", unitArray[0])
 			}
 
-		} else if (kN_kg_switch.getAttribute("data-unitToggle") == "kg") {
+		} else if (kN_kg_switch.getAttribute("data-unit-toggle") == "kg") {
 			newUnit = unitArray[3]
 			// console.log(newUnit, storepath)
-			assign(slab_load_to_beam, unitStorepath, newUnit)
+			assign(SL2B, unitStorepath, newUnit)
 			if (El.previousElementSibling.classList.contains("inputBox")) {
-				El.previousElementSibling.setAttribute("step", 10 ** -unitArray[2])
-				newConvertedValue = Math.round(convertUnit(newUnit, oldValue, oldUnit) * 10 ** unitArray[2]) / (10 ** unitArray[2])
-				assign(slab_load_to_beam, ValueStorepath, newConvertedValue)
+				El.previousElementSibling.setAttribute("step", 10 ** unitArray[2])
+				newConvertedValue = Math.round(convertUnit(newUnit, oldValue, oldUnit) * 10 ** -unitArray[2]) / (10 ** -unitArray[2])
+				assign(SL2B, ValueStorepath, newConvertedValue)
 
 			} else if (El.previousElementSibling.classList.contains("outputBox")) {
 				El.previousElementSibling.setAttribute("data-round", unitArray[2])
@@ -148,7 +151,7 @@ kN_kg_switch.addEventListener('click', function () {
 	retriveAllDataFromDatabaseToInputEl()
 	calculateAndUpdateResult()
 })
-*/
+
 
 // H| function retriveAllDataFromDatabaseToInputEl
 function retriveAllDataFromDatabaseToInputEl() {
@@ -156,7 +159,7 @@ function retriveAllDataFromDatabaseToInputEl() {
 		const storepath = El.getAttribute('data-storepath').split('ю')
 		const command = El.getAttribute('data-command')
 
-		let retrivedValue = retrive(slab_load_to_beam, storepath, command)
+		let retrivedValue = retrive(SL2B, storepath, command)
 		if (retrivedValue != "don't have any value to be retrived" && retrivedValue != 0) {
 
 			if (typeof retrivedValue == "string" && retrivedValue.includes("bars")) {
@@ -167,24 +170,24 @@ function retriveAllDataFromDatabaseToInputEl() {
 		}
 	})
 
-	// document.querySelectorAll('[data-unit]').forEach(El => {
-	// 	const storepath = El.getAttribute('data-storepath').split('ю')
-	// 	// const command = El.getAttribute('data-command')
-	// 	El.innerHTML = retrive(slab_load_to_beam, storepath)
-	// })
+	document.querySelectorAll('[data-unit]').forEach(El => {
+		const storepath = El.getAttribute('data-storepath').split('ю')
+		// const command = El.getAttribute('data-command')
+		El.innerHTML = retrive(SL2B, storepath)
+	})
 }
 
 // H| function calculateAndUpdateResult
 function calculateAndUpdateResult() {
-	slab_load_to_beam.result.m = slab_load_to_beam.initial.S / slab_load_to_beam.initial.L
-	if (slab_load_to_beam.initial.L / slab_load_to_beam.initial.S > 2) {
-		slab_load_to_beam.result.onewayortwoway = "one way"
-		slab_load_to_beam.result.VL = slab_load_to_beam.initial.wu * slab_load_to_beam.initial.S / 2
-		slab_load_to_beam.result.VS = 0
+	SL2B.oput.m = SL2B.iput.S / SL2B.iput.L
+	if (SL2B.iput.L / SL2B.iput.S > 2) {
+		SL2B.oput.onewayortwoway = "one way"
+		SL2B.oput.VL[0] = SL2B.iput.wu[0] * SL2B.iput.S / 2
+		SL2B.oput.VS[0] = 0
 	} else {
-		slab_load_to_beam.result.onewayortwoway = "two way"
-		slab_load_to_beam.result.VL = slab_load_to_beam.initial.wu * slab_load_to_beam.initial.S / 3 * (3 - slab_load_to_beam.result.m ** 2) / 2
-		slab_load_to_beam.result.VS = slab_load_to_beam.initial.wu * slab_load_to_beam.initial.S / 3
+		SL2B.oput.onewayortwoway = "two way"
+		SL2B.oput.VL[0] = SL2B.iput.wu[0] * SL2B.iput.S / 3 * (3 - SL2B.oput.m ** 2) / 2
+		SL2B.oput.VS[0] = SL2B.iput.wu[0] * SL2B.iput.S / 3
 	}
 
 
@@ -192,7 +195,7 @@ function calculateAndUpdateResult() {
 	// console.log("finished calculating result")
 
 	ResultPrintOutToOutputEl()
-	console.log(slab_load_to_beam)
+	console.log(SL2B)
 }
 
 
@@ -201,9 +204,9 @@ function ResultPrintOutToOutputEl() {
 	document.querySelectorAll(".outputBox").forEach(El => {
 		if (El.getAttribute("data-round") != "") {
 			const round = El.getAttribute("data-round") * 1
-			El.innerHTML = Math.round(retrive(slab_load_to_beam, El.getAttribute("data-storepath").split('ю')) * 10 ** round) / 10 ** round
+			El.innerHTML = Math.round(retrive(SL2B, El.getAttribute("data-storepath").split('ю')) * 10 ** round) / 10 ** round
 		} else {
-			El.innerHTML = retrive(slab_load_to_beam, El.getAttribute("data-storepath").split('ю'))
+			El.innerHTML = retrive(SL2B, El.getAttribute("data-storepath").split('ю'))
 		}
 	})
 }
@@ -221,27 +224,27 @@ function redrawSVG() {
 function redrawSVGRect() {
 	const svg = document.querySelector(".section-svg")
 	const strokeWidth = 3
-	// const strokeWidth = Math.max(slab_load_to_beam.dimension.height, slab_load_to_beam.dimension.width) / 100
-	svg.setAttribute("viewBox", `${-strokeWidth / 2} ${-20} ${slab_load_to_beam.dimension.width + strokeWidth} ${slab_load_to_beam.dimension.height + 40}`);
+	// const strokeWidth = Math.max(SL2B.dimension.height, SL2B.dimension.width) / 100
+	svg.setAttribute("viewBox", `${-strokeWidth / 2} ${-20} ${SL2B.dimension.width + strokeWidth} ${SL2B.dimension.height + 40}`);
 
 	const parameter_rect = svg.querySelector(".parameter-rect")
-	parameter_rect.setAttribute("width", slab_load_to_beam.dimension.width)
-	parameter_rect.setAttribute("height", slab_load_to_beam.dimension.height)
+	parameter_rect.setAttribute("width", SL2B.dimension.width)
+	parameter_rect.setAttribute("height", SL2B.dimension.height)
 	parameter_rect.setAttribute("stroke-width", strokeWidth)
 	parameter_rect.setAttribute("rx", 5)
 
 	const outer_stirrup_rect = svg.querySelector(".outer-stirrup-rect")
-	outer_stirrup_rect.setAttribute("width", slab_load_to_beam.dimension.width - slab_load_to_beam.dimension.covering * 2)
-	outer_stirrup_rect.setAttribute("height", slab_load_to_beam.dimension.height - slab_load_to_beam.dimension.covering * 2)
-	outer_stirrup_rect.setAttribute("x", slab_load_to_beam.dimension.covering)
-	outer_stirrup_rect.setAttribute("y", slab_load_to_beam.dimension.covering)
+	outer_stirrup_rect.setAttribute("width", SL2B.dimension.width - SL2B.dimension.covering * 2)
+	outer_stirrup_rect.setAttribute("height", SL2B.dimension.height - SL2B.dimension.covering * 2)
+	outer_stirrup_rect.setAttribute("x", SL2B.dimension.covering)
+	outer_stirrup_rect.setAttribute("y", SL2B.dimension.covering)
 	outer_stirrup_rect.setAttribute("rx", 17)
 
 	const inner_stirrup_rect = svg.querySelector(".inner-stirrup-rect")
-	inner_stirrup_rect.setAttribute("width", slab_load_to_beam.dimension.width - slab_load_to_beam.dimension.covering * 2 - slab_load_to_beam.stirrup * 2)
-	inner_stirrup_rect.setAttribute("height", slab_load_to_beam.dimension.height - slab_load_to_beam.dimension.covering * 2 - slab_load_to_beam.stirrup * 2)
-	inner_stirrup_rect.setAttribute("x", slab_load_to_beam.dimension.covering + slab_load_to_beam.stirrup)
-	inner_stirrup_rect.setAttribute("y", slab_load_to_beam.dimension.covering + slab_load_to_beam.stirrup)
+	inner_stirrup_rect.setAttribute("width", SL2B.dimension.width - SL2B.dimension.covering * 2 - SL2B.stirrup * 2)
+	inner_stirrup_rect.setAttribute("height", SL2B.dimension.height - SL2B.dimension.covering * 2 - SL2B.stirrup * 2)
+	inner_stirrup_rect.setAttribute("x", SL2B.dimension.covering + SL2B.stirrup)
+	inner_stirrup_rect.setAttribute("y", SL2B.dimension.covering + SL2B.stirrup)
 	inner_stirrup_rect.setAttribute("rx", 8)
 }
 function redrawSVGbar() {
@@ -254,10 +257,10 @@ function redrawSVGbar() {
 		for (let j = 0; j < FS.length; j++) {
 			const svgBarLayerGroup = document.querySelector(`.section-svg g.${TB[i]}.${FS[j]}`)
 
-			// console.log(slab_load_to_beam[TB[i]][FS[j]])
+			// console.log(SL2B[TB[i]][FS[j]])
 			let string = ""
-			for (let index = 0; index < slab_load_to_beam[TB[i]][FS[j]].length; index++) {
-				string += `<circle class='' cx='${slab_load_to_beam[TB[i]][FS[j]][index].x * 1}' cy='${slab_load_to_beam[TB[i]][FS[j]][index].y * 1}' r='${slab_load_to_beam[TB[i]][FS[j]][index].diameter * 1 / 2}'
+			for (let index = 0; index < SL2B[TB[i]][FS[j]].length; index++) {
+				string += `<circle class='' cx='${SL2B[TB[i]][FS[j]][index].x * 1}' cy='${SL2B[TB[i]][FS[j]][index].y * 1}' r='${SL2B[TB[i]][FS[j]][index].diameter * 1 / 2}'
 						data-storepath='${TB[i]}ю^${FS[j]}ю${index}юdiameter' />`
 			}
 			svgBarLayerGroup.innerHTML = string
@@ -268,9 +271,9 @@ function redrawSVGbar() {
 				circleEl.addEventListener("click", function (e) {
 					const storepath = circleEl.getAttribute("data-storepath").split("ю")
 
-					let newDiameter = prompt("Please enter new diameter", retrive(slab_load_to_beam, storepath));
+					let newDiameter = prompt("Please enter new diameter", retrive(SL2B, storepath));
 					if (newDiameter != null) {
-						assign(slab_load_to_beam, storepath, newDiameter * 1)
+						assign(SL2B, storepath, newDiameter * 1)
 						retriveAllDataFromDatabaseToInputEl()
 						calculateAndUpdateResult()
 						redrawSVG()
@@ -306,10 +309,10 @@ function redrawPositiveStrainDiagram() {
 		}
 	};
 
-	if (slab_load_to_beam.positive.εt != NaN && slab_load_to_beam.positive.c != NaN && slab_load_to_beam.positive.dt != NaN && slab_load_to_beam.positive.dt != 0) {
-		trace1.x = [0, 0.003, 0, -slab_load_to_beam.positive.εt, 0, 0]
-		trace1.y = [0, 0, slab_load_to_beam.positive.c, slab_load_to_beam.positive.dt, slab_load_to_beam.positive.dt, 0]
-		trace1.text = ["", "", "", `ε=${Math.round(slab_load_to_beam.positive.εt * 10000) / 10000}`, "", ""]
+	if (SL2B.positive.εt != NaN && SL2B.positive.c != NaN && SL2B.positive.dt != NaN && SL2B.positive.dt != 0) {
+		trace1.x = [0, 0.003, 0, -SL2B.positive.εt, 0, 0]
+		trace1.y = [0, 0, SL2B.positive.c, SL2B.positive.dt, SL2B.positive.dt, 0]
+		trace1.text = ["", "", "", `ε=${Math.round(SL2B.positive.εt * 10000) / 10000}`, "", ""]
 	} else {
 		trace1.x = []
 		trace1.y = []
@@ -330,10 +333,10 @@ function redrawPositiveStrainDiagram() {
 
 	const trace3 = {
 		x: [0],
-		y: [slab_load_to_beam.positive.c],
+		y: [SL2B.positive.c],
 		type: 'scatter',
 		mode: 'text',
-		text: [`c=${Math.round(slab_load_to_beam.positive.c * 100) / 100}mm `],
+		text: [`c=${Math.round(SL2B.positive.c * 100) / 100}mm `],
 		textposition: 'left',
 		textfont: {
 			size: 10,
@@ -356,7 +359,7 @@ function redrawPositiveStrainDiagram() {
 			size: 8,
 		},
 	};
-	trace4.y = JSON.parse(`[${slab_load_to_beam.dimension.height},${slab_load_to_beam.dimension.height}]`)
+	trace4.y = JSON.parse(`[${SL2B.dimension.height},${SL2B.dimension.height}]`)
 
 	const trace5 = {
 		x: [-0.005, -0.012],
@@ -373,7 +376,7 @@ function redrawPositiveStrainDiagram() {
 			size: 8,
 		},
 	};
-	trace5.y = JSON.parse(`[${slab_load_to_beam.dimension.height},${slab_load_to_beam.dimension.height}]`)
+	trace5.y = JSON.parse(`[${SL2B.dimension.height},${SL2B.dimension.height}]`)
 
 
 	const trace6 = {
@@ -391,9 +394,9 @@ function redrawPositiveStrainDiagram() {
 			size: 8,
 		},
 	};
-	trace6.x = [0, -slab_load_to_beam.materialStrength.εy]
-	trace6.y = JSON.parse(`[${slab_load_to_beam.dimension.height},${slab_load_to_beam.dimension.height}]`)
-	trace6.text = ["", `εy=${slab_load_to_beam.materialStrength.εy}`]
+	trace6.x = [0, -SL2B.materialStrength.εy]
+	trace6.y = JSON.parse(`[${SL2B.dimension.height},${SL2B.dimension.height}]`)
+	trace6.text = ["", `εy=${SL2B.materialStrength.εy}`]
 
 	const data = [trace1, trace2, trace3, trace4, trace5, trace6];
 	// const data = [trace1];
@@ -422,7 +425,7 @@ function redrawPositiveStrainDiagram() {
 		paper_bgcolor: 'rgba(0,0,0,0)',
 		plot_bgcolor: 'rgba(0,0,0,0)'
 	};
-	layout.yaxis.range = [slab_load_to_beam.dimension.height + 20, -20]
+	layout.yaxis.range = [SL2B.dimension.height + 20, -20]
 
 
 	Plotly.newPlot('myDiv1', data, layout, {

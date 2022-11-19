@@ -26,11 +26,11 @@
 	transition: 0.2s;
 }
 
-.kN-kg-switch[data-unitToggle=kN] .roundslider {
+.kN-kg-switch[data-unit-toggle=kN] .roundslider {
 	transform: translate(0.3rem, 0);
 }
 
-.kN-kg-switch[data-unitToggle=kg] .roundslider {
+.kN-kg-switch[data-unit-toggle=kg] .roundslider {
 	transform: translate(1.9rem, 0);
 }
 

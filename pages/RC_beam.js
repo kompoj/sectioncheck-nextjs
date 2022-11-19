@@ -33,7 +33,7 @@ export default function RC_beam() {
 
 			</Head>
 			<Script src="https://cdn.plot.ly/plotly-2.12.1.min.js" strategy="beforeInteractive"></Script>
-			<Script type="module" src="/js/RCbeamxx.js" strategy="afterInteractive"></Script>
+			<Script type="module" src="/js/RC_beam_spt.js" strategy="afterInteractive"></Script>
 
 
 
@@ -67,7 +67,7 @@ export default function RC_beam() {
 
 					<label className="kN-kg-switch-container">
 						<div>kN</div>
-						<div className="kN-kg-switch" data-unitToggle="kN">
+						<div className="kN-kg-switch" data-unit-toggle="kN">
 							<div className="roundslider"></div>
 						</div>
 						<div>kg</div>
@@ -144,9 +144,9 @@ export default function RC_beam() {
 						<div className="accordion-content">
 							<div className={`accordion-content-inner ${pagestyles.input_output_grid}`}>
 								<div className={pagestyles.input_grid}>
-									<EachInput labelName="concrete strength" placeholder="f&#39;c" data_storepath="materialStrengthюconcreteю0" unit="MPa" min="0" step="0.1" data_unit="1юMPaю0юksc" data_unit_storepath="materialStrengthюconcreteю1" />
-									<EachInput labelName="steel bar strength" placeholder="fy" data_storepath="materialStrengthюsteelю0" unit="MPa" min="0" step="1" data_unit="0юMPaю-1юksc" data_unit_storepath="materialStrengthюsteelю1" />
-									<EachInput labelName="stirrup strength" placeholder="strength" data_storepath="materialStrengthюstirrupю0" unit="MPa" min="0" step="1" data_unit="0юMPaю-1юksc" data_unit_storepath="materialStrengthюstirrupю1" />
+									<EachInput labelName="concrete strength" placeholder="f&#39;c" data_storepath="materialStrengthюconcreteю0" unit="MPa" min="0" step="0.1" data_unit="-1юMPaю0юksc" data_unit_storepath="materialStrengthюconcreteю1" />
+									<EachInput labelName="steel bar strength" placeholder="fy" data_storepath="materialStrengthюsteelю0" unit="MPa" min="0" step="1" data_unit="0юMPaю1юksc" data_unit_storepath="materialStrengthюsteelю1" />
+									<EachInput labelName="stirrup strength" placeholder="strength" data_storepath="materialStrengthюstirrupю0" unit="MPa" min="0" step="1" data_unit="0юMPaю1юksc" data_unit_storepath="materialStrengthюstirrupю1" />
 
 
 

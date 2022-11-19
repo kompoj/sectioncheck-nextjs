@@ -28,19 +28,31 @@ export default function shallow_foundation() {
 
 			</Head>
 			{/* <Script src="https://cdn.plot.ly/plotly-2.12.1.min.js" strategy="beforeInteractive"></Script> */}
-			<Script type="module" src="/js/shallow foundationxx.js" strategy="afterInteractive"></Script>
+			<Script type="module" src="/js/shallow_foundation_spt.js" strategy="afterInteractive"></Script>
 
 			<Nav />
 
 			<div className="not-nav-bar">
 				<Sidebar />
 				<div className="main-content-area">
-					<EachInput labelName="number1" placeholder="PH1" data_storepath="initialюnumber1" min="0" max="120" step="10" unit="N" />
-					<EachInput labelName="number2" placeholder="PH2" data_storepath="initialюnumber2" min="0" max="20" step="0.25" unit="m" />
-					<EachOutput labelName="multiplication" data_storepath="resultюmultiplication" data_round="2" unit="Nm" />
-					<EachOutput labelName="addition" data_storepath="resultюaddition" data_round="2" unit="N+m" />
-					<EachOutput labelName="subtraction" data_storepath="resultюsubtraction" data_round="2" unit="N-m" />
-					<EachOutput labelName="division" data_storepath="resultюdivision" data_round="2" unit="N/m" />
+
+					<label className="kN-kg-switch-container">
+						<div>kN</div>
+						<div className="kN-kg-switch" data-unit-toggle="kN">
+							<div className="roundslider"></div>
+						</div>
+						<div>kg</div>
+					</label>
+
+
+					<EachInput labelName="fc" data_storepath="iputюfcю0" min="0" max="20" step="0.1" unit="MPA" data_unit="0юMPAю0юksc" data_unit_storepath="iputюfcю1" />
+					<EachInput labelName="b0" data_storepath="iputюb0ю0" min="0" max="20" step="0.1" unit="mm" data_unit="0юmmю0юcm" data_unit_storepath="iputюb0ю1" />
+					<EachInput labelName="d" data_storepath="iputюdю0" min="0" max="" step="0.1" unit="mm" data_unit="0юmmю0юcm" data_unit_storepath="iputюdю1" />
+
+					{/* <EachOutput labelName="m" data_storepath="oputюm" data_round="2" unit="" />
+					<EachOutput labelName="onewayortwoway" data_storepath="oputюonewayortwoway" data_round="" unit="" />
+					<EachOutput labelName="VL transfer to long beam" data_storepath="oputюVLю0" data_round="2" unit="kN/m" data_unit="2юkN/mю0юkg/m" data_unit_storepath="oputюVLю1" />
+					<EachOutput labelName="VS transfer to short beam" data_storepath="oputюVSю0" data_round="2" unit="kN/m" data_unit="2юkN/mю0юkg/m" data_unit_storepath="oputюVSю1" /> */}
 				</div>
 			</div>
 			<Footer />
