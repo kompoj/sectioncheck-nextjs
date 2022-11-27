@@ -6,7 +6,7 @@ import { calculateAndUpdateResult } from './calculateAndUpdateResult.js'
 
 
 
-export function listenChangeFromInputElAndAssignToDatabase(obj) {
+export function assignValueFromInputElToDatabase(obj) {
 
 
 	// H| querySelectorAll inputBox

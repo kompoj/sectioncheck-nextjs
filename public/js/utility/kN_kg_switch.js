@@ -1,5 +1,4 @@
 ﻿import { assign, retrive } from './assign-retrive.js'
-// import { calculateAndUpdateResult } from '../slab_load_to_beam_spt.js'
 import convertUnit from './convertUnit.js'
 import retriveAllDataFromDatabaseToInputEl from '../core_function/retriveAllDataFromDatabaseToInputEl.js'
 import { calculateAndUpdateResult } from '../core_function/calculateAndUpdateResult.js'

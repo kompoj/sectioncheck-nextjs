@@ -2,7 +2,7 @@ import { assign, retrive } from './utility/assign-retrive.js'
 import kN_kg_switch from './utility/kN_kg_switch.js'
 import retriveAllDataFromDatabaseToInputEl from './core_function/retriveAllDataFromDatabaseToInputEl.js'
 import { calculateAndUpdateResult } from './core_function/calculateAndUpdateResult.js'
-import { listenChangeFromInputElAndAssignToDatabase } from './core_function/listenChangeFromInputElAndAssignToDatabase.js'
+import { assignValueFromInputElToDatabase } from './core_function/assignValueFromInputElToDatabase.js'
 
 
 // import styles from '/styles/components/Nav.module.css'
@@ -32,7 +32,7 @@ function inititialize() {
 	// redrawSVG()
 }
 
-listenChangeFromInputElAndAssignToDatabase(SL2B)
+assignValueFromInputElToDatabase(SL2B)
 
 
 
