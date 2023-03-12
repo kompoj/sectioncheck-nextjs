@@ -1,7 +1,7 @@
-﻿import styles from '/styles/components/Nav.module.css'
+﻿import styles from './Nav.module.css'
 import Link from 'next/link'
 
-import SidebarStyles from '/styles/components/Sidebar.module.css'
+import SidebarStyles from './Sidebar.module.css'
 
 import { assign, retrive } from '/public/js/utility/assign-retrive.js'
 // console.log(assign)

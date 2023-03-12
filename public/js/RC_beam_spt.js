@@ -1,4 +1,5 @@
 import { assign, retrive } from './utility/assign-retrive.js'
+import convertUnit from './utility/convertUnit.js'
 
 const beamObj = {
 	dimension: {
@@ -22,10 +23,10 @@ const beamObj = {
 		stirrup: [240, "MPa"]
 	},
 	positive: {
-		øMn: [0, "kNm"],
+		øMn: [0, "kN.m"],
 	},
 	negative: {
-		øMn: [0, "kNm"],
+		øMn: [0, "kN.m"],
 	}
 
 
@@ -77,23 +78,7 @@ document.querySelector('#redrawSVG').addEventListener('click', function () {
 })
 
 
-function convertUnit(newUnit, oldValue, oldUnit) {
-	if (newUnit == oldUnit) {
-		return oldValue
-	}
 
-	else if (newUnit == "ksc" && oldUnit == "MPa") {
-		return oldValue / 9.81 * 100
-	} else if (newUnit == "MPa" && oldUnit == "ksc") {
-		return oldValue * 9.81 / 100
-	}
-
-	else if (newUnit == "kgm" && oldUnit == "kNm") {
-		return oldValue * 1000 / 9.81
-	} else if (newUnit == "kNm" && oldUnit == "kgm") {
-		return oldValue * 9.81 / 1000
-	}
-}
 
 
 
@@ -466,7 +451,7 @@ function calculateMoment(positiveOrNegative) {
 	beamObj[positiveOrNegative].is_εs_prime_yielded = is_εs_prime_yielded
 	beamObj[positiveOrNegative].ø = ø
 	beamObj[positiveOrNegative].Mn = Mn
-	beamObj[positiveOrNegative].øMn[0] = convertUnit(beamObj[positiveOrNegative].øMn[1], øMn, "kNm")
+	beamObj[positiveOrNegative].øMn[0] = convertUnit(beamObj[positiveOrNegative].øMn[1], øMn, "kN.m")
 	beamObj[positiveOrNegative].Cc = Cc
 	beamObj[positiveOrNegative].Cs_prime = Cs_prime
 	beamObj[positiveOrNegative].Cs = Cs

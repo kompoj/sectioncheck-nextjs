@@ -2,7 +2,7 @@
 
 export default function code() {
 
-	const thisiscode = `import styles from '/componentStyles/Nav.module.css'
+	const thisiscode = `import styles from '/components/Nav.module.css'
 import Link from 'next/link'
 
 import SidebarStyles from '/componentStyles/Sidebar.module.css'

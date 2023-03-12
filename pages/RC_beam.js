@@ -2,11 +2,11 @@
 import Image from 'next/image'
 import Script from 'next/script'
 
-import Nav from "/components/Nav.js"
+import Nav from "../components/Nav.js"
 import Sidebar from '../components/Sidebar.js'
 import Footer from "../components/Footer.js"
 
-import pagestyles from '/styles/pages/RC_beam.module.css'
+import pagestyles from './RC_beam.module.css'
 
 
 import EachInput from '../components/EachInput.js'
@@ -74,8 +74,8 @@ export default function RC_beam() {
 					</label>
 
 
-					<EachOutput labelName="negative moment capacity" data_storepath="negativeюøMnю0" data_round="2" unit="kNm" data_unit="2юkNmю1юkgm" data_unit_storepath="negativeюøMnю1" />
-					<EachOutput labelName="positive moment capacity" data_storepath="positiveюøMnю0" data_round="2" unit="kNm" data_unit="2юkNmю1юkgm" data_unit_storepath="positiveюøMnю1" />
+					<EachOutput labelName="negative moment capacity" data_storepath="negativeюøMnю0" data_round="1" unit="kN.m" data_unit="1юkN.mю2юt.m" data_unit_storepath="negativeюøMnю1" />
+					<EachOutput labelName="positive moment capacity" data_storepath="positiveюøMnю0" data_round="1" unit="kN.m" data_unit="1юkN.mю2юt.m" data_unit_storepath="positiveюøMnю1" />
 
 
 

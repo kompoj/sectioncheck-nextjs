@@ -1,13 +1,13 @@
-﻿import styles from '/styles/components/Sidebar.module.css'
+﻿import styles from './Sidebar.module.css'
 import Link from 'next/link'
 
-import NavStyles from '/styles/components/Nav.module.css'
+import NavStyles from './Nav.module.css'
 
 const Sidebar = () => {
 	// console.log(document)
 
 	setTimeout(() => {
-		console.log("sidebar script loaded 💥", typeof document)
+		// console.log("sidebar script loaded 💥", typeof document)
 		typeof document !== 'undefined' && document.getElementsByClassName(NavStyles.hamburger)[0].addEventListener("click", () => {
 			document.getElementById(styles.sidebar_inject).classList.add(styles.open)
 		})

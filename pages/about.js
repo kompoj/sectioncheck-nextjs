@@ -2,8 +2,8 @@
 import Image from 'next/image'
 
 
-import Nav from "/components/Nav.js"
-import Sidebar from "/components/Sidebar.js"
+import Nav from "../components/Nav.js"
+import Sidebar from "../components/Sidebar.js"
 import Footer from "../components/Footer.js"
 
 export default function about() {
