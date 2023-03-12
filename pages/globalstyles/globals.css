@@ -154,41 +154,7 @@ input {
 	align-items: center;
 }
 
-.accordion {
-	max-width: 95rem;
-	margin: 3rem auto;
-}
 
-.accordion-header {
-	font-size: 1.5rem;
-	cursor: pointer;
-	display: inline-block;
-	user-select: none;
-}
-
-.accordion-header:hover {
-	color: #5477a0;
-}
-
-.accordion-header::before {
-	content: "▼";
-	display: inline-block;
-	transition: transform 0.2s;
-}
-
-.accordion.collapsed>.accordion-header::before {
-	transform: rotate(-90deg);
-}
-
-.accordion.collapsed>.accordion-content {
-	max-height: 0;
-	overflow: hidden;
-}
-
-.accordion-content-inner {
-	margin-left: 1.6rem;
-	margin-top: 1rem;
-}
 
 .section-svg circle:hover {
 	fill: #5477a0;

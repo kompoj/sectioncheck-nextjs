@@ -1,5 +1,5 @@
+import './globalstyles/accordion.css'
 import './globalstyles/globals.css'
-// import '.../globalstyles/base.css'
 import './globalstyles/my-theme typora.css'
 import './globalstyles/prism.css'
 

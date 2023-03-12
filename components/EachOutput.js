@@ -1,5 +1,6 @@
 ﻿// import styles from '/componentStyles/EachInput.module.css'
 
+// eachoutput and eachinput cannot be .module.css because this class is used by javascipt selector
 
 const EachOutput = (props) => {
 	return (
