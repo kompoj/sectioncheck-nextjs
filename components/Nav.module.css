@@ -7,10 +7,10 @@
 	/* background: url("../../public/img/bgnoise-blueslate.png"); */
 	/* this is actually http://localhost:3000/_next/static/media/bgnoise-blueslate.a3c639b9.png */
 	/* background: #989ca8; */
-	height: 4rem;
+	height: 2.5rem;
 	position: sticky;
 	top: 0;
-	z-index: 1;
+	z-index: 20;
 
 	display: flex;
 	justify-content: space-between;
@@ -25,10 +25,10 @@
 .hamburger {
 	display: none;
 	cursor: pointer;
-	width: 2.5rem;
+	width: 2rem;
 }
 
-@media (max-width:768px) {
+@media (max-width:1024px) {
 	.hamburger {
 		display: block
 	}
@@ -37,7 +37,7 @@
 #sectioncheck_logo {
 	color: rgb(255, 255, 255);
 	text-decoration: none;
-	font-size: 3rem;
+	font-size: 2rem;
 	font-family: caveat;
 	user-select: none;
 	transition: color 0.2s;

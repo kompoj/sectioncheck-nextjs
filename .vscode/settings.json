@@ -1,0 +1,17 @@
+{
+	"favorites.resources": [
+		{
+			"filePath": "components",
+			"group": "Default"
+		},
+		{
+			"filePath": "public\\js",
+			"group": "Default"
+		},
+		{
+			"filePath": "pages",
+			"group": "Default"
+		}
+	],
+	"favorites.sortOrder": "MANUAL"
+}

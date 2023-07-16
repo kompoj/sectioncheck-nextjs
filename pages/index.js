@@ -12,7 +12,7 @@ export default function Home() {
 			<Nav />
 			<div className="not-nav-bar">
 				<Sidebar />
-				<div>WELCOME</div>
+				<div>WELCOME TO first page</div>
 			</div>
 			<Footer />
 

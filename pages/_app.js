@@ -1,3 +1,4 @@
+import './globalstyles/tailwind_directive.css'
 import './globalstyles/accordion.css'
 import './globalstyles/globals.css'
 import './globalstyles/my-theme typora.css'

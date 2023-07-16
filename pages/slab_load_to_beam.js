@@ -35,7 +35,7 @@ export default function shallow_foundation() {
 
 
 
-			<div className="not-nav-bar">
+			<div className="grid grid-cols-1 lg:grid-cols-[200px_1fr]">
 				<Sidebar />
 				<div className="main-content-area">
 
